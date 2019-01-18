@@ -1,0 +1,78 @@
+<script src="../scripts/vendor/form.js"></script>
+<style>
+  .demo-layout-transparent {
+    background: whitesmoke;
+  }
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <form>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rs">
+        <input class="mdl-textfield__input" type="text" id="rs">
+        <label class="mdl-textfield__label" for="rs">Razón Social</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rfc">
+        <input class="mdl-textfield__input" type="text" id="rfc">
+        <label class="mdl-textfield__label" for="rfc">RFC</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label df">
+        <input class="mdl-textfield__input" type="text" id="df">
+        <label class="mdl-textfield__label" for="df">Dirección Fiscal</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label do">
+        <input class="mdl-textfield__input" type="text" id="do">
+        <label class="mdl-textfield__label" for="do">Dirección Oficina</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cp">
+        <input class="mdl-textfield__input" type="text" id="cp">
+        <label class="mdl-textfield__label" for="cp">Contacto Principal</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ccpp">
+        <input class="mdl-textfield__input" type="text" id="ccpp">
+        <label class="mdl-textfield__label" for="ccpp">Contacto Cuenta Por Pagar</label>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cpdf">
+        <input class="mdl-textfield__input" placeholder="Contrato PDF" type="text" id="uploadFile" accept="application/pdf"
+          readonly />
+      </div>
+      <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+        <i class="material-icons">attach_file</i><input type="file" id="uploadBtn" style="opacity: 0" accept="application/pdf"/>
+      </div>
+      <br />
+      <div class="
+          mdl-textfield mdl-js-textfield mdl-textfield--floating-label dc">
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="2" id="dc">
+        <label class="mdl-textfield__label" for="dc">Días de Crédito</label>
+        <span class="mdl-textfield__error">Inserte solo números</span>
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
+        <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+        <label class="mdl-textfield__label" for="obs">Observaciones</label>
+      </div>
+      <div class="button-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+        mdl-color--red-A700 mdl-color-text--white">
+          Cancelar
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+        mdl-color--light-blue-A700 mdl-color-text--white">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
