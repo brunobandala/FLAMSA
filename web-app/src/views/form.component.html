@@ -17,48 +17,48 @@
         <input formControlName="rs" class="mdl-textfield__input" type="text" id="rs">
         <label class="mdl-textfield__label" for="rs">Razón Social</label>
       </div>
-      <div *ngIf="myForm.get('rs').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('rs').hasError('required') && myForm.get('rs').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rfc">
         <input formControlName="rfc" class="mdl-textfield__input" type="text" id="rfc">
         <label class="mdl-textfield__label" for="rfc">RFC</label>
       </div>
-      <div *ngIf="myForm.get('rfc').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('rfc').hasError('required') && myForm.get('rfc').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label df">
         <input formControlName="df" class="mdl-textfield__input" type="text" id="df">
         <label class="mdl-textfield__label" for="df">Dirección Fiscal</label>
       </div>
-      <div *ngIf="myForm.get('df').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('df').hasError('required') && myForm.get('df').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label do">
         <input formControlName="do" class="mdl-textfield__input" type="text" id="do">
         <label class="mdl-textfield__label" for="do">Dirección Oficina</label>
       </div>
-      <div *ngIf="myForm.get('do').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('do').hasError('required') && myForm.get('do').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cp">
         <input formControlName="cp" class="mdl-textfield__input" type="text" id="cp">
         <label class="mdl-textfield__label" for="cp">Contacto Principal</label>
       </div>
-      <div *ngIf="myForm.get('cp').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('cp').hasError('required') && myForm.get('cp').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ccpp">
         <input formControlName="ccpp" class="mdl-textfield__input" type="text" id="ccpp">
         <label class="mdl-textfield__label" for="ccpp">Contacto Cuenta Por Pagar</label>
       </div>
-      <div *ngIf="myForm.get('ccpp').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('ccpp').hasError('required') && myForm.get('ccpp').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cpdf">
@@ -70,12 +70,12 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label dc">
-        <input formControlName="dc" class="mdl-textfield__input" type="text" id="dc">
+        <input formControlName="dc" class="mdl-textfield__input" type="text" id="dc" maxlength="2">
         <label class="mdl-textfield__label" for="dc">Días de Crédito</label>
         <span class="mdl-textfield__error">Inserte solo números</span>
       </div>
-      <div *ngIf="myForm.get('dc').hasError('required') && myForm.dirty">
-        Por favor llene el campo
+      <div *ngIf="myForm.get('dc').hasError('required') && myForm.get('dc').dirty">
+        Campo requerido
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
