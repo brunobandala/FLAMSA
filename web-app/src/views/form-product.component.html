@@ -1,0 +1,57 @@
+<style>
+    .demo-layout-transparent {
+      background: whitesmoke;
+    }
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+      /* This background is dark, so we set text to white. Use 87% black instead if
+         your background is light. */
+      color: white;
+    }
+  </style>
+
+<body>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <form [formGroup]="myForm">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="name" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Nombre</label>
+            </div>
+            <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="boxing" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Embalaje</label>
+            </div>
+            <div *ngIf="myForm.get('boxing').hasError('required') && myForm.get('boxing').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="typeTrailer" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Tipo de Remolque</label>
+            </div>
+            <div *ngIf="myForm.get('typeTrailer').hasError('required') && myForm.get('typeTrailer').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
+                <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+                <label class="mdl-textfield__label" for="obs">Observaciones</label>
+            </div>
+            <br />
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+          mdl-color--red-A700 mdl-color-text--white">
+                    Cancelar
+                </button>
+                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+          mdl-color--light-blue-A700 mdl-color-text--white">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
