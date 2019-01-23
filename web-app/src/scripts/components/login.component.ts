@@ -8,8 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LoginComponent {
-    private router: Router;
     private route: ActivatedRoute;
+
+    constructor(private router: Router) {}
 
     redirection() {
         this.router.navigate(['/home']);
