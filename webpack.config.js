@@ -10,8 +10,7 @@ module.exports = {
     entry: {
         polyfills: './src/scripts/config/polyfills.ts',
         vendor: './src/scripts/config/vendor.ts',
-        app: './src/scripts/main.ts',
-        style: './src/scripts/vendor/material.min.js' 
+        app: './src/scripts/main.ts' 
     }, 
     output: {
         path: path.resolve(__dirname, 'dist'),

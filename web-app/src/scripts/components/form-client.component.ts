@@ -1,7 +1,7 @@
+declare var componentHandler: any;
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import '../vendor/material.min.js';
-
 
 @Component({
   selector: 'form-client',
@@ -11,7 +11,11 @@ import '../vendor/material.min.js';
 export class FormClientComponent implements OnInit {
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  ngAfterViewInit() {
+    componentHandler.upgradeDom();
+  }
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({

@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   { path: 'user', component: FormUserComponent },
   { path: 'provider', component: FormComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
