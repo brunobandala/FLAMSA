@@ -1,10 +1,11 @@
 
     <section>
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--6-col demo-card-image mdl-card mdl-shadow--2dp">
-                <!-- <img src="../assets/logo.jpg" alt="logo.jpg"> -->
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--2-offset demo-card-image mdl-card mdl-shadow--2dp">
+                <img src="../scripts/assets/logo.jpg" alt="logo.jpg">
             </div>
             <div class="mdl-cell mdl-cell--3-col">
+                <h2>Inicia Sesión</h2>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <label class="mdl-textfield__label" for="usernameAccess">Nombre de usuario: </label>
                     <input class="mdl-textfield__input" type="text" name="usernameAccess" id="usernameAccess"/>
@@ -13,7 +14,7 @@
                     <label class="mdl-textfield__label" for="passwordAccess">Contraseña: </label>
                     <input class="mdl-textfield__input" type="password" name="passwordAccess" id="passwordAccess">
                 </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" (click)="redirection()" routerLink="/home">Iniciar sessión</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" (click)="redirection()">Iniciar sessión</button>
             </div>
         </div>
     </section>

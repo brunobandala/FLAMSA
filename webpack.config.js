@@ -10,7 +10,8 @@ module.exports = {
     entry: {
         polyfills: './src/scripts/config/polyfills.ts',
         vendor: './src/scripts/config/vendor.ts',
-        app: './src/scripts/main.ts' 
+        app: './src/scripts/main.ts',
+        style: './src/scripts/vendor/material.min.js' 
     }, 
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -44,6 +45,10 @@ module.exports = {
         {
           test: /\.css$/,
           loaders: ['to-string-loader','style-loader', 'css-loader']
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+          loader: 'file-loader?name=assets/[hash].[ext]'
         }
       ]
   },

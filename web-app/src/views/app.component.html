@@ -1,1 +1,37 @@
-<router-outlet></router-outlet>
+<style>
+    .demo-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+    }
+</style>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <img src="../scripts/assets/logo.jpg" class="demo-avatar">
+                <span class="mdl-layout-title">FLAMSA</span>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" routerLink="/client" routerLinkActive="active">Agregar clientes</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+        </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Title</div>
+                <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+

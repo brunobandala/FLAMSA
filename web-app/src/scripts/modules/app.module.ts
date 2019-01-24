@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { AppRoutingModule }  from './app-routing.module';
 import { AppComponent } from '../components/app.component';
-import { FormModule } from './form.module';
+import { FormClientComponent } from "../components/form-client.component";
+import { FormUserComponent } from "../components/form-user.component";
+import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
-import { principalPage } from '../components/principal.component';
+import { PrincipalComponent } from '../components/principal.component';
+import '../vendor/material.min.js';
  
 @NgModule({
   imports: [
     BrowserModule,
-    FormModule
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule
   ],
   declarations: [
     AppComponent,
+    FormClientComponent,
+    FormUserComponent,
+    FormComponent,
     LoginComponent,
-    principalPage
+    PrincipalComponent
   ],
   bootstrap: [ AppComponent ]
 })

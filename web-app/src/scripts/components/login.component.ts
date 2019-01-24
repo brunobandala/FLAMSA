@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -8,10 +8,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LoginComponent {
-    private route: ActivatedRoute;
 
-    constructor(private router: Router) {}
-
+    
+    public constructor(private router:Router) {
+        
+    }
     redirection() {
         this.router.navigate(['/home']);
     }

@@ -1,25 +1,32 @@
-import { NgModule }              from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
- 
-import { principalPage }   from '../components/principal.component';
-import { LoginComponent } from "../components/login.component";
- 
-const appRoutes: Routes = [
-  { path: 'home', component: principalPage },
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+import { FormClientComponent } from "../components/form-client.component";
+import { FormUserComponent } from "../components/form-user.component";
+import { FormComponent } from '../components/form.component';
+import { LoginComponent } from '../components/login.component';
+import { PrincipalComponent } from '../components/principal.component';
 
+const appRoutes: Routes = [
+  { path: 'home', component: PrincipalComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'client', component: FormClientComponent },
+  { path: 'user', component: FormUserComponent },
+  { path: 'provider', component: FormComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', redirectTo: '/login', pathMatch: 'full' },
 ];
- 
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } 
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
-})
-export class AppRoutingModule {}
+    imports: [
+      RouterModule.forRoot(
+        appRoutes,
+        {
+          enableTracing: false, // <-- debugging purposes only
+        }
+      )
+    ],
+    exports: [
+      RouterModule
+    ]
+  })
+  export class AppRoutingModule { }

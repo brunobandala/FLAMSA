@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import '../vendor/material.min.js';
 
 
 @Component({
   selector: 'form-client',
   templateUrl: '../../views/form-client.component.html',
+  styleUrls: ['../styles-material/styles-material.css']
 })
 export class FormClientComponent implements OnInit {
   myForm: FormGroup;
