@@ -1,84 +1,71 @@
-<style>
-    .demo-layout-transparent {
-      background: whitesmoke;
-    }
-    .demo-layout-transparent .mdl-layout__header,
-    .demo-layout-transparent .mdl-layout__drawer-button {
-      /* This background is dark, so we set text to white. Use 87% black instead if
-         your background is light. */
-      color: white;
-    }
-  </style>
-  
-  <body>
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-      <form [formGroup="myForm"]>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="name" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">Nombre</label>
-        </div>  
-        <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty">
+
+<section>
+  <form [formGroup]="myForm">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="name" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">Nombre</label>
+      </div>  
+      <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="lastname" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">Apellidos</label>
+      </div>
+      <div *ngIf="myForm.get('lastname').hasError('required') && myForm.get('lastname').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="rfc" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">RFC</label>
+      </div>
+      <div *ngIf="myForm.get('rfc').hasError('required') && myForm.get('rfc').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="acronimo" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">Acrónimo</label>
+      </div>
+      <div *ngIf="myForm.get('acronimo').hasError('required') && myForm.get('acronimo').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="address" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">Dirección</label>
+      </div>
+      <div *ngIf="myForm.get('address').hasError('required') && myForm.get('address').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input formControlName="phone" class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label">Teléfono</label>
+      </div>
+      <div *ngIf="myForm.get('phone').hasError('required') && myForm.get('phone').dirty">
+        Campo requerido
+      </div>
+      <br />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input formControlName="email" class="mdl-textfield__input" type="text">
+          <label class="mdl-textfield__label">Correo Electrónico</label>
+        </div>
+        <div *ngIf="myForm.get('email').hasError('required') && myForm.get('email').dirty">
           Campo requerido
         </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="lastname" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">Apellidos</label>
-        </div>
-        <div *ngIf="myForm.get('lastname').hasError('required') && myForm.get('lastname').dirty">
-          Campo requerido
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="rfc" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">RFC</label>
-        </div>
-        <div *ngIf="myForm.get('rfc').hasError('required') && myForm.get('rfc').dirty">
-          Campo requerido
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="acronimo" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">Acrónimo</label>
-        </div>
-        <div *ngIf="myForm.get('acronimo').hasError('required') && myForm.get('acronimo').dirty">
-          Campo requerido
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="address" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">Dirección</label>
-        </div>
-        <div *ngIf="myForm.get('address').hasError('required') && myForm.get('address').dirty">
-          Campo requerido
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="phone" class="mdl-textfield__input" type="text">
-          <label class="mdl-textfield__label">Teléfono</label>
-        </div>
-        <div *ngIf="myForm.get('phone').hasError('required') && myForm.get('phone').dirty">
-          Campo requerido
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input formControlName="email" class="mdl-textfield__input" type="text">
-            <label class="mdl-textfield__label">Correo Electrónico</label>
-          </div>
-          <div *ngIf="myForm.get('email').hasError('required') && myForm.get('email').dirty">
-            Campo requerido
-          </div>
-        <br />
-        <div class="button-container">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-          mdl-color--red-A700 mdl-color-text--white">
-            Cancelar
-          </button>
-          <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-          mdl-color--light-blue-A700 mdl-color-text--white">
-            Guardar
-          </button>
-        </div>
-      </form>
-    </div>
-  </body>
+      <br />
+      <div class="button-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+        mdl-color--red-A700 mdl-color-text--white">
+          Cancelar
+        </button>
+        <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+        mdl-color--light-blue-A700 mdl-color-text--white">
+          Guardar
+        </button>
+      </div>
+  </form>
+</section>

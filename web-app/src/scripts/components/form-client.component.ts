@@ -5,8 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-client',
-  templateUrl: '../../views/form-client.component.html',
-  styleUrls: ['../styles-material/styles-material.css']
+  templateUrl: '../../views/form-client.component.html'
 })
 export class FormClientComponent implements OnInit {
   myForm: FormGroup;
