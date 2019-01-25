@@ -1,39 +1,62 @@
 <style>
-    .demo-layout-transparent {
-      background: url('http://papers.co/wallpaper/papers.co-mr67-australia-capital-city-blue-view-sky-nature-8-wallpaper.jpg') center / cover;
+    .demo-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
     }
-    .demo-layout-transparent .mdl-layout__header,
-    .demo-layout-transparent .mdl-layout__drawer-button {
-      /* This background is dark, so we set text to white. Use 87% black instead if
-         your background is light. */
-      color: white;
+
+    footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
     }
+    /* .mdl-navigation{
+        float: right;
+    } */
 </style>
-<div class="demo-layout-transparent mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header--transparent">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">HOLAAA</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation -->
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">HOLAAA</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-  </main>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <img src="../scripts/assets/logo.jpg" class="demo-avatar">
+                <span class="mdl-layout-title">FLAMSA</span>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Inicio</a>
+                    <span>Formularios:</span>
+                    <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+                        <li class="mdl-menu__item" routerLink="/provider" routerLinkActive="active">
+                            Proveedores
+                        </li>
+                        <li class="mdl-menu__item" routerLink="/client" routerLinkActive="active">
+                            Clientes
+                        </li>
+                        <li class="mdl-menu__item">Disabled Action</li>
+                        <li class="mdl-menu__item">Yet Another Action</li>
+                    </ul>
+                </nav>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
+                </nav>
+            </div>
+        </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Title</div>
+            <ul class="mdl-mini-footer__link-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
 </div>
+

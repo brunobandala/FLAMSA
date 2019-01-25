@@ -44,6 +44,10 @@ module.exports = {
         {
           test: /\.css$/,
           loaders: ['to-string-loader','style-loader', 'css-loader']
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+          loader: 'file-loader?name=assets/[hash].[ext]'
         }
       ]
   },
