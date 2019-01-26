@@ -1,0 +1,129 @@
+<style>
+    .demo-layout-transparent {
+          background: whitesmoke;
+        }
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+          /* This background is dark, so we set text to white. Use 87% black instead if
+             your background is light. */
+          color: white;
+        }
+      </style>
+
+<body>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <form [formGroup]="myFormTraffic">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                <input type="text" value="" class="mdl-textfield__input" id="provider" readonly>
+                <input value="" type="hidden" name="provider" />
+                <label forControlName="provider" class="mdl-textfield__label">Proveedor</label>
+                <ul for="provider" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" data-val="pr1">Proveedor1</li>
+                    <li class="mdl-menu__item" data-val="pr2">Proveedor2</li>
+                </ul>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                <input type="text" value="" class="mdl-textfield__input" id="client" readonly>
+                <input value="" type="hidden" name="client" />
+                <label forControlName="client" class="mdl-textfield__label">Cliente</label>
+                <ul for="client" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" data-val="cl1">Cliente1</li>
+                    <li class="mdl-menu__item" data-val="cl2">Cliente2</li>
+                </ul>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                <input type="text" value="" class="mdl-textfield__input" id="route" readonly>
+                <input value="" type="hidden" name="route" />
+                <label forControlName="route" class="mdl-textfield__label">Ruta</label>
+                <ul for="route" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" data-val="YV">Yucatan-Veracruz</li>
+                    <li class="mdl-menu__item" data-val="MM">Mexico-Monterrey</li>
+                </ul>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                <input type="text" value="" class="mdl-textfield__input" id="product" readonly>
+                <input value="" type="hidden" name="product" />
+                <label forControlName="product" class="mdl-textfield__label">Producto</label>
+                <ul for="product" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                    <li class="mdl-menu__item" data-val="jn">Jabon</li>
+                    <li class="mdl-menu__item" data-val="ts">Tubos</li>
+                </ul>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rs">
+                <input formControlName="tariffProvider" class="mdl-textfield__input" type="number">
+                <label class="mdl-textfield__label">Tarifa proveedor</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rs">
+                <input formControlName="tariffClient" class="mdl-textfield__input" type="number">
+                <label class="mdl-textfield__label">Tarifa cliente</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="number">
+                <label class="mdl-textfield__label">Utilidad</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="accessories" class="mdl-textfield__input" type="number">
+                <label class="mdl-textfield__label">Accesorios</label>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="rs" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Factura proveedor</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="rs" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Factura FLAMSA</label>
+            </div>
+            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file" style="margin-left: 3%">
+                <i class="material-icons">attach_file</i><input type="file" style="opacity: 0;">
+            </div>
+            <br />
+            <div class="mdl-grid">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
+                    <label class="mdl-textfield__label" style="width: 200px">Fecha de carga</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
+                    <label class="mdl-textfield__label" style="width: 200px">Fecha de documentos</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
+                    <label class="mdl-textfield__label" style="width: 200px">Fecha de cobro</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
+                    <label class="mdl-textfield__label" style="width: 200px">Fecha pago proveedor</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
+                    <label class="mdl-textfield__label" style="width: 200px">Fecha pago FLAMSA</label>
+                </div>
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
+                <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+                <label class="mdl-textfield__label" for="obs">Observaciones</label>
+            </div>
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+              mdl-color--red-A700 mdl-color-text--white">
+                    Cancelar
+                </button>
+                <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+              mdl-color--light-blue-A700 mdl-color-text--white">
+                    Guardar
+                </button>
+                <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+                mdl-color--green-700 mdl-color-text--white"
+                    style="margin-left: 3%">
+                    Finalizar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
