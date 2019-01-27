@@ -14,6 +14,8 @@ function createWindow () {
       webSecurity : false
     }
   });
+
+  mainWindow.setMenu(null);
   
   if(process.argv.slice(1).some(val => val === '--web')){
     require('electron-reload')(__dirname,{

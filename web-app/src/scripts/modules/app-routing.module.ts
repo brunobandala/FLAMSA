@@ -5,6 +5,7 @@ import { FormUserComponent } from "../components/form-user.component";
 import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
 import { PrincipalComponent } from '../components/principal.component';
+import { SearchComponent } from "../components/search.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -12,7 +13,8 @@ const appRoutes: Routes = [
   { path: 'client', component: FormClientComponent },
   { path: 'user', component: FormUserComponent },
   { path: 'provider', component: FormComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'search', component: SearchComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

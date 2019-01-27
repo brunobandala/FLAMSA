@@ -1,7 +1,90 @@
+<style>
+    table{
+        width: 50%;
+        text-align: center;
+    }
+</style>
 <section>
+    <div class="mdl-grid">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
+            <label class="mdl-textfield__label" for="ID">Id</label>
+            <span class="mdl-textfield__error">Escribe solo numeros</span>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Proveedor</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Cliente</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Producto</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Ruta</label>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Usuario</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
+            <label class="mdl-textfield__label" for="ID">Factura Flamsa</label>
+            <span class="mdl-textfield__error">Escribe solo numeros</span>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
+            <label class="mdl-textfield__label" for="ID">Factura Proveedor</label>
+            <span class="mdl-textfield__error">Escribe solo numeros</span>
+        </div>
+    </div>
     <div>
-        <form action="#">
-            
-        </form>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="buscar();">
+            Iniciar busqueda
+        </button>
+    </div>
+    <hr>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset">
+            <table id="table_results" class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Usuario</th>
+                        <th class="mdl-data-table__cell--non-numeric">Proveedor</th>
+                        <th class="mdl-data-table__cell--non-numeric">Cliente</th>
+                        <th class="mdl-data-table__cell--non-numeric">Producto</th>
+                        <th class="mdl-data-table__cell--non-numeric">Ruta</th>
+                        <th class="mdl-data-table__cell--non-numeric">Estatus</th>
+                        <th>Factura Flamsa</th>
+                        <th>Factura Provedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let result of results" (click)="selectedResult(result);">
+                        <td>{{result.user}}</td>
+                        <td>{{result.provider}}</td>
+                        <td>{{result.client}}</td>
+                        <td>{{result.product}}</td>
+                        <td>{{result.route}}</td>
+                        <td>{{result.status}}</td>
+                        <td>{{result.bill_flamsa}}</td>
+                        <td>{{result.bill_provider}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="selectedContract" class="mdl-cell mdl-cell--2-col">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                Eliminar
+            </button>
+        </div>
     </div>
 </section>
