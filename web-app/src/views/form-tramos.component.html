@@ -1,0 +1,52 @@
+<style>
+    .demo-layout-transparent {
+      background: whitesmoke;
+    }
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+      /* This background is dark, so we set text to white. Use 87% black instead if
+         your background is light. */
+      color: white;
+    }
+  </style>
+
+<body>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <form [formGroup]="myForm" >
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="origin" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Origen</label>
+            </div>
+            <div *ngIf="myForm.get('origin').hasError('required') && myForm.get('origin').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="destination" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Destino</label>
+            </div>
+            <div *ngIf="myForm.get('destination').hasError('required') && myForm.get('destination').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="km" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Kilómetros</label>
+            </div>
+            <div *ngIf="myForm.get('km').hasError('required') && myForm.get('km').dirty">
+                Campo requerido
+            </div>
+            <br />
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+          mdl-color--red-A700 mdl-color-text--white">
+                    Cancelar
+                </button>
+                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+          mdl-color--light-blue-A700 mdl-color-text--white">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
