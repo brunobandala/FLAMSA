@@ -1,3 +1,4 @@
+declare var componentHandler: any;
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -9,6 +10,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormTramosComponent implements OnInit {
   myForm: FormGroup;
 
+  ngAfterViewInit() {
+    componentHandler.upgradeDom();
+  }
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {

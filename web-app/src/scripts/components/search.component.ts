@@ -53,7 +53,8 @@ export class SearchComponent implements OnInit {
     ];
     results:Array<any>;
     selectedContract: boolean;
-
+    saveContract: boolean;
+    totalContractsIsEmpty: boolean = false;
 
     ngAfterViewInit() {
         componentHandler.upgradeDom();
@@ -65,13 +66,24 @@ export class SearchComponent implements OnInit {
     ngOnInit(){
         this.results = [];
         this.selectedContract = false;
+        this.saveContract = false;
     }
 
-    buscar(){
-        this.results = this.arrSearch;
+    buscar(id:string,provider:string,client:string,product:string,route:string,bill_flamsa:number,bill_provider:number){
+        if (id != '' && provider != '' && client != '' && product != '' && route != '' && bill_flamsa != 0 && bill_provider != 0) {
+            this.results = this.arrSearch;   
+        }else{
+            this.totalContractsIsEmpty = true
+        }
     }
 
     selectedResult(selectedRow: any){
         this.selectedContract = true;
+
+        if (selectedRow.status == 'Guardado') {
+            this.saveContract = true;
+        }else{
+            this.saveContract = false;
+        }
     }
 }

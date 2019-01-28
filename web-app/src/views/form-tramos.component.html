@@ -1,17 +1,5 @@
-<style>
-    .demo-layout-transparent {
-      background: whitesmoke;
-    }
-    .demo-layout-transparent .mdl-layout__header,
-    .demo-layout-transparent .mdl-layout__drawer-button {
-      /* This background is dark, so we set text to white. Use 87% black instead if
-         your background is light. */
-      color: white;
-    }
-  </style>
-
-<body>
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+<section>
+    <div class="mdl-grid">
         <form [formGroup]="myForm" >
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input formControlName="origin" class="mdl-textfield__input" type="text">
@@ -49,4 +37,4 @@
             </div>
         </form>
     </div>
-</body>
+</section>

@@ -1,17 +1,6 @@
-<style>
-    .demo-layout-transparent {
-          background: whitesmoke;
-        }
-        .demo-layout-transparent .mdl-layout__header,
-        .demo-layout-transparent .mdl-layout__drawer-button {
-          /* This background is dark, so we set text to white. Use 87% black instead if
-             your background is light. */
-          color: white;
-        }
-      </style>
 
-<body>
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+<section>
+    <div class="mdl-grid">
         <form [formGroup]="myFormTraffic">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
                 <input type="text" value="" class="mdl-textfield__input" id="provider" readonly>
@@ -111,11 +100,11 @@
             </div>
             <div class="button-container">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-              mdl-color--red-A700 mdl-color-text--white">
+                mdl-color--red-A700 mdl-color-text--white">
                     Cancelar
                 </button>
                 <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-              mdl-color--light-blue-A700 mdl-color-text--white">
+                mdl-color--light-blue-A700 mdl-color-text--white">
                     Guardar
                 </button>
                 <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
@@ -126,4 +115,4 @@
             </div>
         </form>
     </div>
-</body>
+</section>

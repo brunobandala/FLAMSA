@@ -9,6 +9,8 @@ import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
 import { PrincipalComponent } from '../components/principal.component';
 import { SearchComponent } from "../components/search.component";
+import { FormTrafficComponent } from "../components/form-traffic.component";
+import { FormTramosComponent } from "../components/form-tramos.component";
  
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { SearchComponent } from "../components/search.component";
     FormComponent,
     LoginComponent,
     PrincipalComponent,
-    SearchComponent
+    SearchComponent,
+    FormTrafficComponent,
+    FormTramosComponent
   ],
   bootstrap: [ AppComponent ]
 })

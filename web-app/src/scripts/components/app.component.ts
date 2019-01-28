@@ -4,4 +4,8 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   templateUrl: '../../views/app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+    Logout(){
+      window.close();
+    }
+}

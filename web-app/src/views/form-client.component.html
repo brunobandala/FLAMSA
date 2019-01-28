@@ -1,4 +1,5 @@
 <section>
+    <div class="mdl-grid">
         <form [formGroup]="myForm">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input formControlName="rs" class="mdl-textfield__input" type="text" id="rs">
@@ -78,13 +79,14 @@
             </div>
             <div class="button-container">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-              mdl-color--red-A700 mdl-color-text--white">
+                mdl-color--red-A700 mdl-color-text--white">
                     Cancelar
                 </button>
                 <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-              mdl-color--light-blue-A700 mdl-color-text--white">
+                mdl-color--light-blue-A700 mdl-color-text--white">
                     Guardar
                 </button>
             </div>
         </form>
+    </div>
 </section>

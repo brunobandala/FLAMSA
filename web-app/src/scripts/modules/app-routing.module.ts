@@ -6,6 +6,8 @@ import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
 import { PrincipalComponent } from '../components/principal.component';
 import { SearchComponent } from "../components/search.component";
+import { FormTrafficComponent } from "../components/form-traffic.component";
+import { FormTramosComponent } from "../components/form-tramos.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -14,6 +16,8 @@ const appRoutes: Routes = [
   { path: 'user', component: FormUserComponent },
   { path: 'provider', component: FormComponent },
   { path: 'search', component: SearchComponent},
+  { path: 'contracts', component: FormTrafficComponent},
+  { path: 'stretches', component: FormTramosComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

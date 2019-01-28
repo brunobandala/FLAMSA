@@ -1,3 +1,5 @@
+declare var componentHandler: any;
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -9,6 +11,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormTrafficComponent implements OnInit {
   myFormTraffic: FormGroup;
 
+  ngAfterViewInit() {
+    componentHandler.upgradeDom();
+  }
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {

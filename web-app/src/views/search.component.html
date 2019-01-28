@@ -7,49 +7,52 @@
 <section>
     <div class="mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
+            <input #id class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
             <label class="mdl-textfield__label" for="ID">Id</label>
             <span class="mdl-textfield__error">Escribe solo numeros</span>
         </div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" id="sample3">
-            <label class="mdl-textfield__label" for="sample3">Proveedor</label>
+            <input #provider class="mdl-textfield__input" type="text" id="provider">
+            <label class="mdl-textfield__label" for="provider">Proveedor</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" id="sample3">
-            <label class="mdl-textfield__label" for="sample3">Cliente</label>
+            <input #client class="mdl-textfield__input" type="text" id="client">
+            <label class="mdl-textfield__label" for="client">Cliente</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" id="sample3">
-            <label class="mdl-textfield__label" for="sample3">Producto</label>
+            <input #product class="mdl-textfield__input" type="text" id="product">
+            <label class="mdl-textfield__label" for="product">Producto</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" id="sample3">
-            <label class="mdl-textfield__label" for="sample3">Ruta</label>
+            <input #route class="mdl-textfield__input" type="text" id="route">
+            <label class="mdl-textfield__label" for="route">Ruta</label>
         </div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" id="sample3">
-            <label class="mdl-textfield__label" for="sample3">Usuario</label>
+            <input #user class="mdl-textfield__input" type="text" id="user">
+            <label class="mdl-textfield__label" for="user">Usuario</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
-            <label class="mdl-textfield__label" for="ID">Factura Flamsa</label>
+            <input #bill_flamsa class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="bill_flamsa">
+            <label class="mdl-textfield__label" for="bill_flamsa">Factura Flamsa</label>
             <span class="mdl-textfield__error">Escribe solo numeros</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ID">
-            <label class="mdl-textfield__label" for="ID">Factura Proveedor</label>
+            <input #bill_provider class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="bill_provider">
+            <label class="mdl-textfield__label" for="bill_provider">Factura Proveedor</label>
             <span class="mdl-textfield__error">Escribe solo numeros</span>
         </div>
     </div>
     <div>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="buscar();">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="buscar(id.value, provider.value, client.value, product.value, route.value, user.value, bill_flamsa.value, bill_provider.value);">
             Iniciar busqueda
         </button>
+        <div *ngIf="totalContractsIsEmpty" >
+            <span style="color:red">Debe introducir texto en un campo</span>
+        </div>
     </div>
     <hr>
     <div class="mdl-grid">
@@ -82,8 +85,11 @@
             </table>
         </div>
         <div *ngIf="selectedContract" class="mdl-cell mdl-cell--2-col">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red-A700 mdl-color-text--white mdl-js-ripple-effect">
                 Eliminar
+            </button>
+            <button *ngIf="saveContract" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
+                Modificar
             </button>
         </div>
     </div>
