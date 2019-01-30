@@ -8,6 +8,7 @@ import { PrincipalComponent } from '../components/principal.component';
 import { SearchComponent } from "../components/search.component";
 import { FormTrafficComponent } from "../components/form-traffic.component";
 import { FormTramosComponent } from "../components/form-tramos.component";
+import { FormRouteComponent} from "../components/form-route.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'contracts', component: FormTrafficComponent},
   { path: 'stretches', component: FormTramosComponent},
+  { path: 'routes', component: FormRouteComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

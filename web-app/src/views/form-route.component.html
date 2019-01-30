@@ -1,0 +1,67 @@
+<style>
+    .demo-layout-transparent {
+              background: whitesmoke;
+            }
+            .demo-layout-transparent .mdl-layout__header,
+            .demo-layout-transparent .mdl-layout__drawer-button {
+              /* This background is dark, so we set text to white. Use 67% black instead if
+                 your background is light. */
+              color: white;
+            }
+            .mdl-grid .mdl-cell--6-col {
+                border: 1px solid rgb(45, 151, 67);
+                background: transparent;
+                overflow-y: scroll;
+                padding-bottom: 10px;
+            }
+          </style>
+
+<section>
+    <div class="mdl-grid">
+        <form [formGroup]="myFormRoute">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="name" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Nombre</label>
+            </div>
+            <br>
+            <div class="mdl-grid">
+                <div class="mdl-cell--6-col">
+                    <div class="mdl-card__title">
+                        <p>Tramos de la Ruta</p>
+                    </div>
+                    <div class="mdl-card__supporting-text" *ngFor="let select of selected">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck2(catalog_route.innerText);">
+                            <span name="routesSelected" #catalog_route class="mdl-checkbox__label">{{select.route_name}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mdl-cell--6-col" style="margin-left: 25px">
+                    <div class="mdl-card__title">
+                        <p>Tramos de Catalogo</p>
+                    </div>
+                    <div class="mdl-card__supporting-text" *ngFor="let route of routes">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck(catalog.innerText);">
+                            <span #catalog class="mdl-checkbox__label">{{route.route_name}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input formControlName="km" class="mdl-textfield__input" type="text">
+                <label class="mdl-textfield__label">Kilomentros</label>
+            </div>
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+                  mdl-color--red-A700 mdl-color-text--white">
+                    Cancelar
+                </button>
+                <button (click)="onSubmit()" [disabled]="myFormRoute.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+                  mdl-color--light-blue-A700 mdl-color-text--white">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

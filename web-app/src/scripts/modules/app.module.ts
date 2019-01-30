@@ -11,6 +11,7 @@ import { PrincipalComponent } from '../components/principal.component';
 import { SearchComponent } from "../components/search.component";
 import { FormTrafficComponent } from "../components/form-traffic.component";
 import { FormTramosComponent } from "../components/form-tramos.component";
+import { FormRouteComponent } from "../components/form-route.component";
  
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { FormTramosComponent } from "../components/form-tramos.component";
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule
+
   ],
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { FormTramosComponent } from "../components/form-tramos.component";
     PrincipalComponent,
     SearchComponent,
     FormTrafficComponent,
-    FormTramosComponent
+    FormTramosComponent,
+    FormRouteComponent
   ],
   bootstrap: [ AppComponent ]
 })
