@@ -1,8 +1,7 @@
-
-<section>
-  <form [formGroup]="myForm">
+<section class="fadeIn animated">
+  <form [formGroup]="myForm" autocomplete="nope">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="name" class="mdl-textfield__input" type="text">
+        <input formControlName="name" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">Nombre</label>
       </div>  
       <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty">
@@ -10,7 +9,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="lastname" class="mdl-textfield__input" type="text">
+        <input formControlName="lastname" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">Apellidos</label>
       </div>
       <div *ngIf="myForm.get('lastname').hasError('required') && myForm.get('lastname').dirty">
@@ -18,7 +17,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="rfc" class="mdl-textfield__input" type="text">
+        <input formControlName="rfc" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">RFC</label>
       </div>
       <div *ngIf="myForm.get('rfc').hasError('required') && myForm.get('rfc').dirty">
@@ -26,7 +25,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="acronimo" class="mdl-textfield__input" type="text">
+        <input formControlName="acronimo" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">Acrónimo</label>
       </div>
       <div *ngIf="myForm.get('acronimo').hasError('required') && myForm.get('acronimo').dirty">
@@ -34,7 +33,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="address" class="mdl-textfield__input" type="text">
+        <input formControlName="address" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">Dirección</label>
       </div>
       <div *ngIf="myForm.get('address').hasError('required') && myForm.get('address').dirty">
@@ -42,7 +41,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input formControlName="phone" class="mdl-textfield__input" type="text">
+        <input formControlName="phone" class="mdl-textfield__input" type="text" autocomplete="nope">
         <label class="mdl-textfield__label">Teléfono</label>
       </div>
       <div *ngIf="myForm.get('phone').hasError('required') && myForm.get('phone').dirty">
@@ -50,7 +49,7 @@
       </div>
       <br />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input formControlName="email" class="mdl-textfield__input" type="text">
+          <input formControlName="email" class="mdl-textfield__input" type="text" autocomplete="nope">
           <label class="mdl-textfield__label">Correo Electrónico</label>
         </div>
         <div *ngIf="myForm.get('email').hasError('required') && myForm.get('email').dirty">

@@ -8,13 +8,15 @@ import { FormUserComponent } from "../components/form-user.component";
 import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
 import { PrincipalComponent } from '../components/principal.component';
- 
+import { HttpModule } from '@angular/http';
+
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule 
   ],
   declarations: [
     AppComponent,

@@ -1,3 +1,4 @@
+declare var componentHandler: any;
 import { Component } from "@angular/core";
 
 @Component({
@@ -6,6 +7,11 @@ import { Component } from "@angular/core";
 })
 
 export class PrincipalComponent {
+
+    ngAfterViewInit() {
+        componentHandler.upgradeDom();
+    }
+
     constructor() {
         
     }
