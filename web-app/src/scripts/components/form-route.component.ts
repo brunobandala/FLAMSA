@@ -50,6 +50,7 @@ export class FormRouteComponent implements OnInit {
     }
     console.log(this.myFormRoute.value);
     console.log(this.routes);
+    console.log(this.selected);
   }
 
   selectedCheck(checkbox: any) {
@@ -61,12 +62,12 @@ export class FormRouteComponent implements OnInit {
     });
   }
 
-  // selectedCheck2(checkbox: any) {
-  //   this.selected.forEach(((element: { id?: number; route_name: any; }) => {
-  //     if (element.route_name == checkbox) {
-  //       this.routes.push(new Object);
-  //       this.selected = this.selected.filter((sel: { route_name: any; }) => sel.route_name != element.route_name);
-  //     }
-  //   });
-  // }
+  selectedCheck2(checkbox: any) {
+    this.selected.forEach((element: any) => {
+      if (element.route_name == checkbox) {
+        this.routes.push(element);
+        this.selected = this.selected.filter((sel:any) => sel.route_name != element.route_name);
+      }
+    });
+  }
 }
