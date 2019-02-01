@@ -8,7 +8,11 @@ import { FormUserComponent } from "../components/form-user.component";
 import { FormComponent } from '../components/form.component';
 import { LoginComponent } from '../components/login.component';
 import { PrincipalComponent } from '../components/principal.component';
-import { HttpModule } from '@angular/http';
+import { HttpModule,Http, XHRBackend, RequestOptions } from '@angular/http';
+import { SimplePdfViewerModule } from 'simple-pdf-viewer';
+
+
+import {httpFactory} from "../factories/httpFactory";
 
 @NgModule({
   imports: [
@@ -16,7 +20,8 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule 
+    HttpModule,
+    SimplePdfViewerModule
   ],
   declarations: [
     AppComponent,
@@ -26,6 +31,13 @@ import { HttpModule } from '@angular/http';
     LoginComponent,
     PrincipalComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers : [
+    {
+      provide : Http,
+      useFactory : httpFactory,
+      deps : [XHRBackend,RequestOptions]
+    }
+  ]
 })
 export class AppModule { }

@@ -70,6 +70,7 @@
         "lodash": "^4.17.11",
         "material-components-web": "^0.43.0",
         "rxjs": "^5.4.3",
+        "simple-pdf-viewer": "^2.0.3",
         "tapable": "^1.1.1",
         "zone.js": "^0.8.18"
     },
