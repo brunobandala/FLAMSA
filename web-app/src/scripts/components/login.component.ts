@@ -1,9 +1,5 @@
 declare var componentHandler: any;
-<<<<<<< HEAD
-import { Component, ViewChild, ElementRef } from "@angular/core";
-=======
 import { Component } from "@angular/core";
->>>>>>> integration
 import { Router } from "@angular/router";
 import {SessionService} from "../services/session.service";
 import {Response} from "@angular/http";

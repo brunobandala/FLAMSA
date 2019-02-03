@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit {
     }
 
     buscar(id:string,provider:string,client:string,product:string,route:string,bill_flamsa:number,bill_provider:number){
-        if (id != '' && provider != '' && client != '' && product != '' && route != '' && bill_flamsa != 0 && bill_provider != 0) {
+        if (id != '' || provider != '' || client != '' || product != '' || route != '' || bill_flamsa != 0 || bill_provider != 0) {
             this.results = this.arrSearch;   
         }else{
             this.totalContractsIsEmpty = true
