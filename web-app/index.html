@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="/">
-    <title>FLAMSA</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-  <body>
-    <my-app></my-app>
-  </body>
+
+<head>
+  <base href="/">
+  <title>FLAMSA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<body>
+  <style>
+    html {
+      overflow: scroll;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      /* remove scrollbar space */
+      background: transparent;
+      /* optional: just make scrollbar invisible */
+    }
+
+    /* optional: show position indicator in red */
+
+    ::-webkit-scrollbar-thumb {
+      background: #FF0000;
+    }
+
+    footer {
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+    }
+  </style>
+  <my-app></my-app>
+</body>
 </html>

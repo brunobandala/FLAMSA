@@ -1,11 +1,17 @@
 declare var componentHandler: any;
+<<<<<<< HEAD
 import { Component, ViewChild, ElementRef } from "@angular/core";
+=======
+import { Component } from "@angular/core";
+>>>>>>> integration
 import { Router } from "@angular/router";
-
+import {SessionService} from "../services/session.service";
+import {Response} from "@angular/http";
 
 @Component({
     selector: "login",
-    templateUrl: "../../views/login.html"
+    templateUrl: "../../views/login.html",
+    providers : [SessionService]
 })
 
 export class LoginComponent {
@@ -16,9 +22,10 @@ export class LoginComponent {
         componentHandler.upgradeDom();
       }
     
-    public constructor(private router:Router) {
-        
-    }
+    public constructor(
+        private router:Router, 
+        private _sessionService : SessionService) {}
+
 
     construction(username: string){
         this.userSection = document.getElementById("userSection");
@@ -31,11 +38,17 @@ export class LoginComponent {
         this.userSection.appendChild(userText);
         this.userSection.removeAttribute("hidden");
     }
-
-    redirection(username:string,password:string) {
-        if(username != '' && password != ''){
-            this.construction(username);
+    
+    login(username:string, password: string) {
+        this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
+            
+            localStorage.setItem("session",JSON.stringify(res.json()));
             this.router.navigate(['/home']);
-        }
+          },(err:any)=>{
+            let toast:any;
+            toast = document.querySelector('.mdl-js-snackbar');
+            toast.MaterialSnackbar.showSnackbar({message : "EMAIL / PASSWORD INVÁLIDOS"});
+          }
+          );
     }
 }

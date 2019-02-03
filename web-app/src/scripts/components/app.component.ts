@@ -1,3 +1,4 @@
+declare var componentHandler: any;
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,7 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: '../../views/app.component.html'
 })
 export class AppComponent {
-    Logout(){
-      window.close();
-    }
+
+  Logout(){
+    window.close();
+  }
+  
+  ngAfterViewInit() {
+    componentHandler.upgradeDom();
+  }
+
+
 }
+

@@ -1,8 +1,8 @@
-<section>
-    <div class="mdl-grid">
-        <form [formGroup]="myForm">
+
+<section class="fadeIn animated">
+        <form [formGroup]="myForm" autocomplete="nope">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="rs" class="mdl-textfield__input" type="text" id="rs">
+                <input formControlName="rs" class="mdl-textfield__input" type="text" id="rs" autocomplete="nope">
                 <label class="mdl-textfield__label" for="rs">Razón Social</label>
             </div>
             <div *ngIf="myForm.get('rs').hasError('required') && myForm.dirty">
@@ -10,7 +10,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rfc">
-                <input formControlName="rfc" class="mdl-textfield__input" type="text" id="rfc">
+                <input formControlName="rfc" class="mdl-textfield__input" type="text" id="rfc" autocomplete="nope">
                 <label class="mdl-textfield__label" for="rfc">RFC</label>
             </div>
             <div *ngIf="myForm.get('rfc').hasError('required') && myForm.dirty">
@@ -18,7 +18,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label df">
-                <input formControlName="df" class="mdl-textfield__input" type="text" id="df">
+                <input formControlName="df" class="mdl-textfield__input" type="text" id="df" autocomplete="nope">
                 <label class="mdl-textfield__label" for="df">Dirección Fiscal</label>
             </div>
             <div *ngIf="myForm.get('df').hasError('required') && myForm.dirty">
@@ -26,7 +26,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label do">
-                <input formControlName="do" class="mdl-textfield__input" type="text" id="do">
+                <input formControlName="do" class="mdl-textfield__input" type="text" id="do" autocomplete="nope">
                 <label class="mdl-textfield__label" for="do">Dirección Oficina</label>
             </div>
             <div *ngIf="myForm.get('do').hasError('required') && myForm.dirty">
@@ -34,7 +34,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cp">
-                <input formControlName="cp" class="mdl-textfield__input" type="text" id="cp">
+                <input formControlName="cp" class="mdl-textfield__input" type="text" id="cp" autocomplete="nope">
                 <label class="mdl-textfield__label" for="cp">Contacto Principal</label>
             </div>
             <div *ngIf="myForm.get('cp').hasError('required') && myForm.dirty">
@@ -42,7 +42,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ccpp">
-                <input formControlName="ccpp" class="mdl-textfield__input" type="text" id="ccpp">
+                <input formControlName="ccpp" class="mdl-textfield__input" type="text" id="ccpp" autocomplete="nope">
                 <label class="mdl-textfield__label" for="ccpp">Contacto Cuenta Por Pagar</label>
             </div>
             <div *ngIf="myForm.get('ccpp').hasError('required') && myForm.dirty">
@@ -65,7 +65,7 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label dc">
-                <input formControlName="dc" class="mdl-textfield__input" type="text" id="dc">
+                <input formControlName="dc" class="mdl-textfield__input" type="text" id="dc" autocomplete="nope">
                 <label class="mdl-textfield__label" for="dc">Días de Crédito</label>
                 <span class="mdl-textfield__error">Inserte solo números</span>
             </div>

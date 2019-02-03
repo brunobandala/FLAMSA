@@ -21,72 +21,80 @@
         float: right;
     } */
 </style>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <!-- Title -->
-                <img src="../scripts/assets/logo.jpg" class="demo-avatar">
-                <span class="mdl-layout-title">FLAMSA</span>
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Inicio</a>
-                    <span>Catalogos:</span>
-                    <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+  
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+</div>
+<div class="mdl-layout mdl-layout__content mdl-layout--fixed-header fadeIn animated">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <img src="../scripts/assets/logo.jpg" class="demo-avatar">
+            <span class="mdl-layout-title">FLAMSA</span>
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Inicio</a>
+                <span>Formularios:</span>
+                <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+                    <li class="mdl-menu__item" routerLink="/provider" routerLinkActive="active">
+                        Proveedores
+                    </li>
+                    <li class="mdl-menu__item" routerLink="/client" routerLinkActive="active">
+                        Clientes
+                    </li>
+                    <li class="mdl-menu__item" routerLink="/contracts" routerLinkActive="active">
+                        Contratos
+                    </li>
+                    <li class="mdl-menu__item" routerLink="/stretches" routerLinkActive="active">
+                        Tramos
+                    </li>
+                    <li class="mdl-menu__item" routerLink="/routes" routerLinkActive="active">
+                        Rutas
+                    </li>
+                </ul>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/search" routerLinkActive="active">
+                    Buscar
+                </button>
+            </nav>
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <div id="loginSection">
+                    <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
+
+                </div>
+                <div id="userSection" class="demo-drawer-header" hidden="true">
+                    <img src="../scripts/assets/user.jpg" class="demo-avatar-user">
+                    <button id="demo-menu-lower-left2" class="mdl-button mdl-js-button mdl-button--icon">
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
                     </button>
-                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-                        <li class="mdl-menu__item" routerLink="/provider" routerLinkActive="active">
-                            Proveedores
-                        </li>
-                        <li class="mdl-menu__item" routerLink="/client" routerLinkActive="active">
-                            Clientes
-                        </li>
-                        <li class="mdl-menu__item" routerLink="/contracts" routerLinkActive="active">
-                            Contratos
-                        </li>
-                        <li class="mdl-menu__item" routerLink="/stretches" routerLinkActive="active">
-                            Tramos
-                        </li>
-                        <li class="mdl-menu__item" routerLink="/routes" routerLinkActive="active">
-                            Rutas
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left2">
+                        <li class="mdl-menu__item" (click)="Logout();">
+                            Salir
                         </li>
                     </ul>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/search" routerLinkActive="active">
-                        Buscar
-                    </button>
-                </nav>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <div id="loginSection">
-                        <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
-
-                    </div>
-                    <div id="userSection" class="demo-drawer-header" hidden="true">
-                        <img src="../scripts/assets/user.jpg" class="demo-avatar-user">
-                        <button id="demo-menu-lower-left2" class="mdl-button mdl-js-button mdl-button--icon">
-                            <i class="material-icons" role="presentation">arrow_drop_down</i>
-                        </button>
-                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left2">
-                            <li class="mdl-menu__item" (click)="Logout();">
-                                Salir
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <router-outlet></router-outlet>
+                </div>
+            </nav>
         </div>
+    </header>
+    <main>
+        <router-outlet></router-outlet>
     </main>
+    <br>
+    <br>
+    <br>
     <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
             <div class="mdl-logo">Title</div>
             <ul class="mdl-mini-footer__link-list">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy & Terms</a></li>
+                <li>
+                    <a href="#">Help</a>
+                </li>
+                <li>
+                    <a href="#">Privacy & Terms</a>
+                </li>
             </ul>
         </div>
     </footer>
 </div>
-

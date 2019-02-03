@@ -13,13 +13,20 @@ import { FormTrafficComponent } from "../components/form-traffic.component";
 import { FormTramosComponent } from "../components/form-tramos.component";
 import { FormRouteComponent } from "../components/form-route.component";
  
+import { HttpModule,Http, XHRBackend, RequestOptions } from '@angular/http';
+import { SimplePdfViewerModule } from 'simple-pdf-viewer';
+
+
+import {httpFactory} from "../factories/httpFactory";
+
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
-
+    AppRoutingModule,
+    HttpModule,
+    SimplePdfViewerModule
   ],
   declarations: [
     AppComponent,
@@ -33,6 +40,13 @@ import { FormRouteComponent } from "../components/form-route.component";
     FormTramosComponent,
     FormRouteComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers : [
+    {
+      provide : Http,
+      useFactory : httpFactory,
+      deps : [XHRBackend,RequestOptions]
+    }
+  ]
 })
 export class AppModule { }
