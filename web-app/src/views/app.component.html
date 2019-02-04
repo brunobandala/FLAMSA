@@ -10,7 +10,7 @@
     <button type="button" class="mdl-snackbar__action"></button>
 </div>
 <div class="mdl-layout mdl-layout__content mdl-layout--fixed-header fadeIn animated">
-    <header class="mdl-layout__header">
+    <header class="mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
             <img src="../scripts/assets/logo.jpg" class="demo-avatar">
             <span class="mdl-layout-title">FLAMSA</span>
@@ -39,21 +39,18 @@
     </header>
     <main>
         <router-outlet></router-outlet>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Title</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy & Terms</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
     </main>
-    <br>
-    <br>
-    <br>
-    <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">Title</div>
-            <ul class="mdl-mini-footer__link-list">
-                <li>
-                    <a href="#">Help</a>
-                </li>
-                <li>
-                    <a href="#">Privacy & Terms</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
 </div>
