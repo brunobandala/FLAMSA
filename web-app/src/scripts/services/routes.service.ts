@@ -10,4 +10,8 @@ constructor(private http: Http){}
    getAllRoutes(){
      return this.http.get("/rutas");
    }
+
+   saveRoute(route:any){
+     return this.http.post("/rutas",route);
+   }
 }

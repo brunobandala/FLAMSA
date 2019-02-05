@@ -30,11 +30,15 @@
           mdl-color--red-A700 mdl-color-text--white">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-          mdl-color--light-blue-A700 mdl-color-text--white">
+                <button 
+                    (click)="onSubmit()" 
+                    [disabled]="myForm.invalid"
+                    [ngClass] = "{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myForm.invalid)}" 
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
             </div>
         </form>
     </div>
 </section>
+<br><br><br><br><br><br><br><br><br><br><br><br>
