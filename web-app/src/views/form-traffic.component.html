@@ -3,42 +3,50 @@
     <div class="mdl-grid">
         <form [formGroup]="myFormTraffic">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="provider" readonly>
-                <input value="" type="hidden" name="provider" />
+                <input type="text" formControlName="provider" name="provider" class="mdl-textfield__input" id="provider" readonly>
                 <label forControlName="provider" class="mdl-textfield__label">Proveedor</label>
-                <ul for="provider" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="pr1">Proveedor1</li>
-                    <li class="mdl-menu__item" data-val="pr2">Proveedor2</li>
+                <ul for="provider"
+                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu" 
+                    data-mdl-for="provider">
+                    <li 
+                        *ngFor="let provider of providersCatalog" 
+                        class="mdl-menu__item"
+                        (click)="selectCatalogItem(provider,'provider')">{{provider.name}}</li>
                 </ul>
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="client" readonly>
-                <input value="" type="hidden" name="client" />
+                <input type="text" formControlName="client" name="client" class="mdl-textfield__input" id="client" readonly>
                 <label forControlName="client" class="mdl-textfield__label">Cliente</label>
                 <ul for="client" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="cl1">Cliente1</li>
-                    <li class="mdl-menu__item" data-val="cl2">Cliente2</li>
+                    <li 
+                        *ngFor="let client of clientsCatalog"
+                        class="mdl-menu__item"
+                        (click)="selectCatalogItem(client,'client')">{{client.name}}</li>
                 </ul>
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="route" readonly>
+                <input type="text" formControlName="route" class="mdl-textfield__input" id="route" readonly>
                 <input value="" type="hidden" name="route" />
                 <label forControlName="route" class="mdl-textfield__label">Ruta</label>
                 <ul for="route" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="YV">Yucatan-Veracruz</li>
-                    <li class="mdl-menu__item" data-val="MM">Mexico-Monterrey</li>
+                    <li 
+                        *ngFor="let route of routesCatalog"
+                        class="mdl-menu__item"
+                        (click)="selectCatalogItem(route,'route')">{{route.name}}</li>
                 </ul>
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="product" readonly>
+                <input type="text" formControlName="product" class="mdl-textfield__input" id="product" readonly>
                 <input value="" type="hidden" name="product" />
                 <label forControlName="product" class="mdl-textfield__label">Producto</label>
                 <ul for="product" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="jn">Jabon</li>
-                    <li class="mdl-menu__item" data-val="ts">Tubos</li>
+                    <li 
+                        *ngFor="let product of productsCatalog"
+                        class="mdl-menu__item"
+                        (click)="selectCatalogItem(product,'product')">{{product.name}}</li>
                 </ul>
             </div>
             <br />
@@ -51,7 +59,7 @@
                 <label class="mdl-textfield__label">Tarifa cliente</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="number">
+                <input class="mdl-textfield__input" formControlName="utility" type="number">
                 <label class="mdl-textfield__label">Utilidad</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -60,42 +68,39 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="rs" class="mdl-textfield__input" type="text">
+                <input formControlName="factureProvider"class="mdl-textfield__input" type="number">
                 <label class="mdl-textfield__label">Factura proveedor</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="rs" class="mdl-textfield__input" type="text">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-offset">
+                <input formControlName="factureFlamsa" class="mdl-textfield__input" type="number">
                 <label class="mdl-textfield__label">Factura FLAMSA</label>
-            </div>
-            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file" style="margin-left: 3%">
-                <i class="material-icons">attach_file</i><input type="file" style="opacity: 0;">
             </div>
             <br />
             <div class="mdl-grid">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
-                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
-                    <label class="mdl-textfield__label" style="width: 200px">Fecha de carga</label>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input formControlName="loadDate" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label">Fecha de carga</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input formControlName="documentsDate" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label">Fecha de documentos</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
-                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
-                    <label class="mdl-textfield__label" style="width: 200px">Fecha de documentos</label>
+                    <input formControlName="billDate" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label">Fecha de cobro</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
-                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
-                    <label class="mdl-textfield__label" style="width: 200px">Fecha de cobro</label>
+                    <input formControlName="providerPayDate" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label">Fecha pago proveedor</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
-                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
-                    <label class="mdl-textfield__label" style="width: 200px">Fecha pago proveedor</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
-                    <input formControlName="rs" class="mdl-textfield__input" type="text" style="width: 200px">
-                    <label class="mdl-textfield__label" style="width: 200px">Fecha pago FLAMSA</label>
+                    <input formControlName="flamsaPayDate" class="mdl-textfield__input" type="text">
+                    <label class="mdl-textfield__label">Fecha pago FLAMSA</label>
                 </div>
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
-                <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+                <textarea formControlName="observations"  class="mdl-textfield__input" type="text" id="obs"></textarea>
                 <label class="mdl-textfield__label" for="obs">Observaciones</label>
             </div>
             <div class="button-container">
@@ -103,12 +108,18 @@
                 mdl-color--red-A700 mdl-color-text--white">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-                mdl-color--light-blue-A700 mdl-color-text--white">
+                <button 
+                (click)="onSubmit('guardar')" 
+                [disabled]="myFormTraffic.invalid"
+                [ngClass] = "{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myFormTraffic.invalid)}" 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myFormTraffic.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-                mdl-color--green-700 mdl-color-text--white"
+                <button 
+                (click)="onSubmit('finalizar')" 
+                [disabled]="myFormTraffic.invalid"
+                [ngClass] = "{'mdl-color--green-700 mdl-color-text--white' : (!myFormTraffic.invalid)}"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                     style="margin-left: 3%">
                     Finalizar
                 </button>

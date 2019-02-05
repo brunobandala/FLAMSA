@@ -62,7 +62,6 @@ export class FormComponent implements OnInit {
 
   saveContract(event:FileList){
     let file:File = event.item(0);
-    this.pdfViewer.openFile(file);
     this.isUploadingContract = true;
     this._filesService.uploadFile(file).subscribe((response:Response)=>{
 
@@ -71,10 +70,12 @@ export class FormComponent implements OnInit {
       this.isUploadingContract = false;
       form = this.myForm.value;
       form["filename"] = body.fd;
-
+      this.pdfViewer.openFile(file);
+      
       this.myForm.setValue(form);
     },(error:any)=>{
-      alert(error);
+      this.toast.MaterialSnackbar.showSnackbar(
+        {message : "Ocurrió un error al guardar el contrato!"});
       this.isUploadingContract = false;
     });
   }

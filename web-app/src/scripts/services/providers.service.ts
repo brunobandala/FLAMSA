@@ -10,4 +10,8 @@ constructor(private http: Http){}
 
      return this.http.post("/proveedores",provider);
    }
+
+   getAllProviders(){
+     return this.http.get("/proveedores");
+   }
 }
