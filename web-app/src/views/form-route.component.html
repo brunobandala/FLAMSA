@@ -1,21 +1,22 @@
 <style>
     .demo-layout-transparent {
-              background: whitesmoke;
-            }
-            .demo-layout-transparent .mdl-layout__header,
-            .demo-layout-transparent .mdl-layout__drawer-button {
-              /* This background is dark, so we set text to white. Use 67% black instead if
-                 your background is light. */
-              color: white;
-            }
-            .mdl-grid .mdl-cell--6-col {
-                border: 1px solid rgb(45, 151, 67);
-                background: transparent;
-                overflow-y: scroll;
-                padding-bottom: 10px;
-            }
-          </style>
+        background: whitesmoke;
+    }
 
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+        /* This background is dark, so we set text to white. Use 67% black instead if
+                 your background is light. */
+        color: white;
+    }
+
+    .mdl-grid .mdl-cell--6-col {
+        border: 1px solid rgb(45, 151, 67);
+        background: transparent;
+        overflow-y: scroll;
+        padding-bottom: 10px;
+    }
+</style>
 <section>
     <div class="mdl-grid">
         <form [formGroup]="myFormRoute">

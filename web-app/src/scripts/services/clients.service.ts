@@ -10,4 +10,8 @@ constructor(private http: Http){}
   getClients(){
      return this.http.get("/cliente");
    }
+
+  createClient(client:any){
+    return this.http.post("/cliente",client);
+  }
 }

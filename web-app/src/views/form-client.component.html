@@ -2,79 +2,102 @@
 <section class="fadeIn animated">
         <form [formGroup]="myForm" autocomplete="nope">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="rs" class="mdl-textfield__input" type="text" id="rs" autocomplete="nope">
+                <input formControlName="businessName" class="mdl-textfield__input" type="text" id="rs" autocomplete="nope">
                 <label class="mdl-textfield__label" for="rs">Razón Social</label>
             </div>
-            <div *ngIf="myForm.get('rs').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('businessName').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rfc">
-                <input formControlName="rfc" class="mdl-textfield__input" type="text" id="rfc" autocomplete="nope">
+                <input formControlName="RFC" class="mdl-textfield__input" type="text" id="rfc" autocomplete="nope">
                 <label class="mdl-textfield__label" for="rfc">RFC</label>
             </div>
-            <div *ngIf="myForm.get('rfc').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('RFC').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label df">
-                <input formControlName="df" class="mdl-textfield__input" type="text" id="df" autocomplete="nope">
+                <input formControlName="fiscalAddress" class="mdl-textfield__input" type="text" id="df" autocomplete="nope">
                 <label class="mdl-textfield__label" for="df">Dirección Fiscal</label>
             </div>
-            <div *ngIf="myForm.get('df').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('fiscalAddress').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label do">
-                <input formControlName="do" class="mdl-textfield__input" type="text" id="do" autocomplete="nope">
+                <input formControlName="officeAddress" class="mdl-textfield__input" type="text" id="do" autocomplete="nope">
                 <label class="mdl-textfield__label" for="do">Dirección Oficina</label>
             </div>
-            <div *ngIf="myForm.get('do').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('officeAddress').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cp">
-                <input formControlName="cp" class="mdl-textfield__input" type="text" id="cp" autocomplete="nope">
+                <input formControlName="principalContact" class="mdl-textfield__input" type="text" id="cp" autocomplete="nope">
                 <label class="mdl-textfield__label" for="cp">Contacto Principal</label>
             </div>
-            <div *ngIf="myForm.get('cp').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('principalContact').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ccpp">
-                <input formControlName="ccpp" class="mdl-textfield__input" type="text" id="ccpp" autocomplete="nope">
+                <input formControlName="seccondaryContact" class="mdl-textfield__input" type="text" id="ccpp" autocomplete="nope">
                 <label class="mdl-textfield__label" for="ccpp">Contacto Cuenta Por Pagar</label>
             </div>
-            <div *ngIf="myForm.get('ccpp').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('seccondaryContact').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cpdf">
-                <input class="mdl-textfield__input" placeholder="Proceso de Cobro" type="text" readonly />
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cpdf"
+                 [hidden]="isUploadingContract[0]">
+                <input class="mdl-textfield__input"
+                       [attr.value] = "paymentProcessFilename"
+                       id = "paymentProcessFilename"
+                       type="text" 
+                    readonly />
+                <label class="mdl-textfield__label" for="paymentProcessFilename">Proceso de Cobro</label>
             </div>
-            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                <i class="material-icons">attach_file</i><input type="file" style="opacity: 0"/>
+            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file"
+                 [hidden]="isUploadingContract[0]">
+                <i class="material-icons">attach_file</i>
+                <input type="file" 
+                       accept="application/pdf"
+                       style="opacity: 0"
+                       (change) = "saveFile($event.target.files,'paymentProcessFilename',0)"/>
             </div>
+            <div class="mdl-spinner mdl-js-spinner is-active" [hidden]="!isUploadingContract[0]"></div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label cpdf">
-                <input class="mdl-textfield__input" placeholder="Contrato PDF" type="text" id="uploadFile" accept="application/pdf"
-                    readonly />
+                <input class="mdl-textfield__input"
+                       [attr.value] = "contractFilename"
+                       type="text" 
+                       id="uploadFile"
+                       readonly />
+                <label class="mdl-textfield__label" for="paymentProcessFilename">Contrato PDF</label>
             </div>
-            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                <i class="material-icons">attach_file</i><input type="file" id="uploadBtn" style="opacity: 0" accept="application/pdf" />
+            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file"
+                 [hidden]="isUploadingContract[1]">
+                <i class="material-icons">attach_file</i>
+                <input type="file" 
+                       id="uploadBtn" 
+                       style="opacity: 0" 
+                       accept="application/pdf" 
+                       (change) = "saveFile($event.target.files,'contractFilename',1)" />
             </div>
+            <div class="mdl-spinner mdl-js-spinner is-active" [hidden]="!isUploadingContract[1]"></div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label dc">
-                <input formControlName="dc" class="mdl-textfield__input" type="text" id="dc" autocomplete="nope">
+                <input formControlName="creditDays" class="mdl-textfield__input" type="number" id="dc" autocomplete="nope">
                 <label class="mdl-textfield__label" for="dc">Días de Crédito</label>
                 <span class="mdl-textfield__error">Inserte solo números</span>
             </div>
-            <div *ngIf="myForm.get('dc').hasError('required') && myForm.dirty">
+            <div *ngIf="myForm.get('creditDays').hasError('required') && myForm.dirty">
                 Por favor llene el campo
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
-                <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+                <textarea formControlName="observations" class="mdl-textfield__input" type="text" id="obs"></textarea>
                 <label class="mdl-textfield__label" for="obs">Observaciones</label>
             </div>
             <div class="button-container">
@@ -82,8 +105,11 @@
                 mdl-color--red-A700 mdl-color-text--white">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-                mdl-color--light-blue-A700 mdl-color-text--white">
+                <button
+                    [ngClass] = "{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myForm.invalid && !isUploadingContract[0] && !isUploadingContract[1])}" 
+                    (click)="onSubmit()" 
+                    [disabled]="myForm.invalid" 
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
             </div>
