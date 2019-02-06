@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { BrowserModule }  from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AppRoutingModule }  from './app-routing.module';
@@ -23,6 +24,7 @@ import {httpFactory} from "../factories/httpFactory";
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,

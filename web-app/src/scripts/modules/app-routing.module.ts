@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'contracts', component: FormTrafficComponent},
   { path: 'stretches', component: FormTramosComponent},
   { path: 'routes', component: FormRouteComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

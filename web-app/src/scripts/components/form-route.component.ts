@@ -46,11 +46,7 @@ export class FormRouteComponent implements OnInit {
     this.routesSelected = document.getElementsByName("routesSelected");
     for (let i = 0; i < this.routesSelected.length; i++) {
       const element = this.routesSelected[i];
-      console.log(element);
     }
-    console.log(this.myFormRoute.value);
-    console.log(this.routes);
-    console.log(this.selected);
   }
 
   selectedCheck(checkbox: any) {
@@ -66,8 +62,27 @@ export class FormRouteComponent implements OnInit {
     this.selected.forEach((element: any) => {
       if (element.route_name == checkbox) {
         this.routes.push(element);
+        this.createElementsForSelectedRoutes(element);
         this.selected = this.selected.filter((sel:any) => sel.route_name != element.route_name);
       }
     });
+  }
+
+  createElementsForSelectedRoutes(selectedCheckbox: any){
+    var divSelectedRoutes = document.getElementById('divSelectedRoutes');
+    var label = document.createElement("label")
+    var checkbox = document.createElement("input");
+    var span = document.createElement("span");
+    label.setAttribute("class","mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("class", "mdl-checkbox__input");
+    checkbox.setAttribute("(click)", "mdl-selectedCheck(catalog.innerText);");
+    span.setAttribute("class", "mdl-checkbox__label");
+    span.innerText = selectedCheckbox.route_name;
+
+    //Agregar elementos al div
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    divSelectedRoutes.appendChild(label);
   }
 }

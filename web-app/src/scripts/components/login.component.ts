@@ -20,7 +20,9 @@ export class LoginComponent {
     
     public constructor(
         private router:Router, 
-        private _sessionService : SessionService) {}
+        private _sessionService : SessionService) {
+            document.getElementById("demo-menu-lower-left").setAttribute("disabled", "true");
+        }
 
 
     construction(username: string){
@@ -39,6 +41,7 @@ export class LoginComponent {
         this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
             
             localStorage.setItem("session",JSON.stringify(res.json()));
+            document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
             this.router.navigate(['/home']);
           },(err:any)=>{
             let toast:any;

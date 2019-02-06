@@ -71,12 +71,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let result of results" (click)="selectedResult(result);">
-                        <td>{{result.creationUser.name}}</td>
-                        <td>{{result.provider.businessName}}</td>
-                        <td>{{result.client.name}}</td>
-                        <td>{{result.product.name}}</td>
-                        <td>{{result.route.name}}</td>
-                        <td>{{result.status}}</td>
+                        <td>{{result.creationUser.name | uppercase }}</td>
+                        <td>{{result.provider.businessName | uppercase }}</td>
+                        <td>{{result.client.name | uppercase }}</td>
+                        <td>{{result.product.name | uppercase }}</td>
+                        <td>{{result.route.name | uppercase }}</td>
+                        <td>{{result.status | uppercase }}</td>
                         <td>{{result.flamsaBill}}</td>
                         <td>{{result.providerBill}}</td>
                     </tr>
