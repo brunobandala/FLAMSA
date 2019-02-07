@@ -76,17 +76,6 @@
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">FLAMSA</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="" routerLink="/contracts" routerLinkActive="active">Contratos</a>
-            <a class="mdl-navigation__link" href="" routerLink="/provider" routerLinkActive="active">
-            Proveedores</a>
-            <a class="mdl-navigation__link" href="" routerLink="/client" routerLinkActive="active">
-            Clientes</a>
-            <a class="mdl-navigation__link" href="" routerLink="/stretches" routerLinkActive="active">
-            Tramos</a>
-            <a class="mdl-navigation__link" href="" routerLink="/routes" routerLinkActive="active">
-            Rutas</a>
-            <a class="mdl-navigation__link" href="" routerLink="/products" routerLinkActive="active">
-            Productos</a>
             <div id="loginSection">
                 <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
             </div>
@@ -101,10 +90,24 @@
                     </li>
                 </ul>
             </div>
+            <a class="mdl-navigation__link" href="" routerLink="/contracts" routerLinkActive="active">Contratos</a>
+            <a class="mdl-navigation__link" href="" routerLink="/provider" routerLinkActive="active">
+            Proveedores</a>
+            <a class="mdl-navigation__link" href="" routerLink="/client" routerLinkActive="active">
+            Clientes</a>
+            <a class="mdl-navigation__link" href="" routerLink="/stretches" routerLinkActive="active">
+            Tramos</a>
+            <a class="mdl-navigation__link" href="" routerLink="/routes" routerLinkActive="active">
+            Rutas</a>
+            <a class="mdl-navigation__link" href="" routerLink="/products" routerLinkActive="active">
+            Productos</a>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/search" routerLinkActive="active">
+                Buscar contratos
+            </button>
         </nav>
     </div>
     <main>
         <router-outlet></router-outlet>
     </main>
-    <footerComponent></footerComponent>
+    <footerComponent *ngIf="showFooter"></footerComponent>
 </div>

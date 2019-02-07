@@ -10,11 +10,17 @@ import { ClientSessionService } from "../services/client.session.service";
   providers: [SessionService]
 })
 export class AppComponent {
+  showFooter:boolean;
 
   constructor(
     private router: Router,
     private _cookieService: CookieService,
     private _sessionService: SessionService) {
+      if (screen.width<1024) 
+          this.showFooter = false;
+      else{
+          this.showFooter = true;
+      }
   }
 
   Logout() {

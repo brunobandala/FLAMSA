@@ -71,6 +71,13 @@ export class SearchComponent implements OnInit{
     deleteSelectedRow(selectedRow:any, divRows:any){
         console.log(selectedRow);
         console.log(divRows);
+
+        for (let index = 0; index < divRows.childNodes.length; index++) {
+            if (divRows.childNodes[index] == selectedRow) {
+                divRows.removeChild(divRows.childNodes[index]);
+            }
+            
+        }
     }
 
     buscar() {
