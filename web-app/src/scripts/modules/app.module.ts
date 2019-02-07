@@ -14,6 +14,7 @@ import { FormTrafficComponent } from "../components/form-traffic.component";
 import { FormTramosComponent } from "../components/form-tramos.component";
 import { FormRouteComponent } from "../components/form-route.component";
 import { footerComponent } from "../components/footer.component";
+import { FormProductComponent } from "../components/form-product.component";
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { HttpModule,Http, XHRBackend, RequestOptions } from '@angular/http';
 import { SimplePdfViewerModule } from 'simple-pdf-viewer';
@@ -43,6 +44,7 @@ import {httpFactory} from "../factories/httpFactory";
     FormTrafficComponent,
     FormTramosComponent,
     FormRouteComponent,
+    FormProductComponent,
     footerComponent
   ],
   bootstrap: [ AppComponent ],

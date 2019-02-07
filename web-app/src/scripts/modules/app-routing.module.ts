@@ -9,6 +9,7 @@ import { SearchComponent } from "../components/search.component";
 import { FormTrafficComponent } from "../components/form-traffic.component";
 import { FormTramosComponent } from "../components/form-tramos.component";
 import { FormRouteComponent} from "../components/form-route.component";
+import { FormProductComponent } from "../components/form-product.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'contracts', component: FormTrafficComponent},
   { path: 'stretches', component: FormTramosComponent},
   { path: 'routes', component: FormRouteComponent },
+  { path: 'products', component: FormProductComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

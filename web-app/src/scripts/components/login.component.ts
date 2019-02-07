@@ -21,7 +21,7 @@ export class LoginComponent {
     public constructor(
         private router:Router, 
         private _sessionService : SessionService) {
-            document.getElementById("demo-menu-lower-left").setAttribute("disabled", "true");
+            // document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
         }
 
 

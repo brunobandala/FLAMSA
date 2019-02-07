@@ -5,7 +5,7 @@
         <input formControlName="businessName" class="mdl-textfield__input" type="text" id="businessName" autocomplete="nope">
         <label class="mdl-textfield__label" for="businessName">Razón Social</label>
       </div>
-      <div *ngIf="myForm.get('businessName').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('businessName').hasError('required') && myForm.get('businessName').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -13,7 +13,7 @@
         <input formControlName="RFC" class="mdl-textfield__input" type="text" id="RFC" autocomplete="nope">
         <label class="mdl-textfield__label" for="RFC">RFC</label>
       </div>
-      <div *ngIf="myForm.get('RFC').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('RFC').hasError('required') && myForm.get('RFC').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -21,7 +21,7 @@
         <input formControlName="fiscalAddress" class="mdl-textfield__input" type="text" id="fiscalAddress" autocomplete="nope">
         <label class="mdl-textfield__label" for="fiscalAddress">Dirección Fiscal</label>
       </div>
-      <div *ngIf="myForm.get('fiscalAddress').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('fiscalAddress').hasError('required') && myForm.get('fiscalAddress').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -29,7 +29,7 @@
         <input formControlName="officeAddress" class="mdl-textfield__input" type="text" id="officeAddress" autocomplete="nope">
         <label class="mdl-textfield__label" for="officeAddress">Dirección Oficina</label>
       </div>
-      <div *ngIf="myForm.get('officeAddress').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('officeAddress').hasError('required') && myForm.get('officeAddress').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -37,7 +37,7 @@
         <input formControlName="personalContact" class="mdl-textfield__input" type="text" id="personalContact" autocomplete="nope">
         <label class="mdl-textfield__label" for="personalContact">Contacto Principal</label>
       </div>
-      <div *ngIf="myForm.get('personalContact').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('personalContact').hasError('required') && myForm.get('personalContact').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -45,7 +45,7 @@
         <input formControlName="contact" class="mdl-textfield__input" type="text" id="contact" autocomplete="nope">
         <label class="mdl-textfield__label" for="contact">Contacto Cuenta Por Pagar</label>
       </div>
-      <div *ngIf="myForm.get('contact').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('contact').hasError('required') && myForm.get('contact').dirty">
         Por favor llene el campo
       </div>
       <br />
@@ -63,7 +63,7 @@
         <label class="mdl-textfield__label" for="creditDays">Días de Crédito</label>
         <span class="mdl-textfield__error">Inserte solo números</span>
       </div>
-      <div *ngIf="myForm.get('creditDays').hasError('required') && myForm.dirty">
+      <div style="color:red" *ngIf="myForm.get('creditDays').hasError('required') && myForm.get('creditDays').dirty">
         Por favor llene el campo
       </div>
       <br />

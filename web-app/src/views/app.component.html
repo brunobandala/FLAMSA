@@ -11,7 +11,7 @@
         border-radius: 12px;
     }
 
-    footer {
+    footerComponent {
         position: bottom;
         bottom: 0;
         width: 100%;
@@ -29,7 +29,8 @@
             <span class="mdl-layout-title">FLAMSA</span>
             <nav class="mdl-navigation mdl-layout--large-screen-only">
                 <a class="mdl-navigation__link" routerLink="/home" routerLinkActive="active">Inicio</a>
-                <span>Formularios:</span>
+                <a class="mdl-navigation__link" routerLink="/contracts" routerLinkActive="active">Contratos</a>
+                <span>Catalogos:</span>
                 <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons" role="presentation">arrow_drop_down</i>
                 </button>
@@ -40,14 +41,14 @@
                     <li class="mdl-menu__item" routerLink="/client" routerLinkActive="active">
                         Clientes
                     </li>
-                    <li class="mdl-menu__item" routerLink="/contracts" routerLinkActive="active">
-                        Contratos
-                    </li>
                     <li class="mdl-menu__item" routerLink="/stretches" routerLinkActive="active">
                         Tramos
                     </li>
                     <li class="mdl-menu__item" routerLink="/routes" routerLinkActive="active">
                         Rutas
+                    </li>
+                    <li class="mdl-menu__item" routerLink="/products" routerLinkActive="active">
+                        Productos
                     </li>
                 </ul>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" routerLink="/search" routerLinkActive="active">

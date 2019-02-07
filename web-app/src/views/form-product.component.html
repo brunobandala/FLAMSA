@@ -1,40 +1,31 @@
-<style>
-    .demo-layout-transparent {
-      background: whitesmoke;
-    }
-    .demo-layout-transparent .mdl-layout__header,
-    .demo-layout-transparent .mdl-layout__drawer-button {
-      /* This background is dark, so we set text to white. Use 87% black instead if
-         your background is light. */
-      color: white;
-    }
-  </style>
-
-<body>
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+<section class="fadeIn animated">
+    <div class="mdl-grid">
         <form [formGroup]="myForm">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="name" class="mdl-textfield__input" type="text">
+                <input formControlName="name" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+" >
                 <label class="mdl-textfield__label">Nombre</label>
+                <span class="mdl-textfield__error">Solo letras y numeros</span>
             </div>
-            <div *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty">
-                Campo requerido
+            <div style="color:red" *ngIf="myForm.get('name').hasError('required') && myForm.get('name').dirty" >
+                Nombre es requerido
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="boxing" class="mdl-textfield__input" type="text">
+                <input formControlName="boxing" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
                 <label class="mdl-textfield__label">Embalaje</label>
+                <span class="mdl-textfield__error">Solo letras y numeros</span>
             </div>
-            <div *ngIf="myForm.get('boxing').hasError('required') && myForm.get('boxing').dirty">
-                Campo requerido
+            <div style="color:red" *ngIf="myForm.get('boxing').hasError('required') && myForm.get('boxing').dirty">
+                Embalaje es requerido
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="typeTrailer" class="mdl-textfield__input" type="text">
+                <input formControlName="typeTrailer" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
                 <label class="mdl-textfield__label">Tipo de Remolque</label>
+                <span class="mdl-textfield__error">Solo letras y numeros</span>
             </div>
-            <div *ngIf="myForm.get('typeTrailer').hasError('required') && myForm.get('typeTrailer').dirty">
-                Campo requerido
+            <div style="color:red" *ngIf="myForm.get('typeTrailer').hasError('required') && myForm.get('typeTrailer').dirty">
+                Tipo de Remolque es requerido
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
@@ -43,15 +34,25 @@
             </div>
             <br />
             <div class="button-container">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-          mdl-color--red-A700 mdl-color-text--white">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red-A700 mdl-color-text--white" (click)="cancelarAlta()">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-          mdl-color--light-blue-A700 mdl-color-text--white">
+                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
                     Guardar
                 </button>
             </div>
         </form>
     </div>
-</body>
+</section>
+<dialog class="mdl-dialog">
+    <h4 class="mdl-dialog__title">Datos guardados </h4>
+    <div class="mdl-dialog__content">
+      <p>
+        ¿Deseas guardar otro registro?
+      </p>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" (click)="nuevoRegistro()">Si</button>
+      <button type="button" class="mdl-button" (click)="cancelarAlta()">No</button>
+    </div>
+  </dialog>
