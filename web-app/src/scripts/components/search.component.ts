@@ -48,6 +48,8 @@ export class SearchComponent implements OnInit{
                 this.totalContractsIsEmpty = false;
             }
 
+            
+
         },(error:any)=>{
             this.toast.MaterialSnackbar.showSnackbar(
                 {message : "Ocurrió un error al guardar el proveedor"});
@@ -85,7 +87,7 @@ export class SearchComponent implements OnInit{
     selectedResult(selectedRow: any) {
         this.selectedContract = true;
 
-        if (selectedRow.status == 'Guardado') {
+        if (selectedRow.status == 'guardado') {
             this.saveContract = true;
         } else {
             this.saveContract = false;

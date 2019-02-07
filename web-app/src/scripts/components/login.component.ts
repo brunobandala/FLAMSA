@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import {SessionService} from "../services/session.service";
 import {Response} from "@angular/http";
+import {ClientSessionService} from "../services/client.session.service";
 
 @Component({
     selector: "login",
@@ -26,22 +27,14 @@ export class LoginComponent {
 
 
     construction(username: string){
-        this.userSection = document.getElementById("userSection");
-        this.loginSection = document.getElementById("loginSection");
-        while (this.loginSection.hasChildNodes()){
-            this.loginSection.removeChild(this.loginSection.firstChild);
-        }
-
-        var userText = document.createElement("span");
-        userText.innerText = username;
-        this.userSection.appendChild(userText);
-        this.userSection.removeAttribute("hidden");
     }
     
     login(username:string, password: string) {
         this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
             this.construction(username);
             localStorage.setItem("session",JSON.stringify(res.json()));
+            ClientSessionService.isLoggedIn = true;
+            ClientSessionService.username = username;
             document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
             this.router.navigate(['/home']);
           },(err:any)=>{

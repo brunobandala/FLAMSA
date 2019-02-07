@@ -19,7 +19,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { HttpModule,Http, XHRBackend, RequestOptions } from '@angular/http';
 import { SimplePdfViewerModule } from 'simple-pdf-viewer';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-
+import { ClientSessionService } from '../services/client.session.service';
 
 import {httpFactory} from "../factories/httpFactory";
 
@@ -48,7 +48,7 @@ import {httpFactory} from "../factories/httpFactory";
     FormProductComponent,
     footerComponent
   ],
-  bootstrap: [ AppComponent ],
+  bootstrap: [ AppComponent],
   providers : [
     CookieService,
     {

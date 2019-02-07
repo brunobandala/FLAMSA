@@ -54,7 +54,7 @@
         <img src="../scripts/assets/no_users_found.png" class="mdl-cell--5-offset">
         <p class="mdl-cell--4-offset">No hay nada que mostrar, por favor, realiza una nueva b&uacute;squeda</p>
         </div>
-        <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset" [hidden]="!results.length">
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--1-offset" [hidden]="!results.length">
             
             <table id="table_results" class="mdl-data-table mdl-js-data-table">
                 <thead>
@@ -67,6 +67,7 @@
                         <th class="mdl-data-table__cell--non-numeric">Estatus</th>
                         <th>Factura Flamsa</th>
                         <th>Factura Provedor</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,17 +80,19 @@
                         <td>{{result.status | uppercase }}</td>
                         <td>{{result.flamsaBill}}</td>
                         <td>{{result.providerBill}}</td>
+                        <td>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red-A700 mdl-color-text--white mdl-js-ripple-effect">
+                                    Eliminar
+                                </button>
+                                <button *ngIf="result.status == 'guardado'" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
+                                    Modificar
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div *ngIf="selectedContract" class="mdl-cell mdl-cell--2-col">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red-A700 mdl-color-text--white mdl-js-ripple-effect">
-                Eliminar
-            </button>
-            <button *ngIf="saveContract" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
-                Modificar
-            </button>
         </div>
     </div>
 </section>
