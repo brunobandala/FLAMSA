@@ -11,4 +11,8 @@ constructor(private http: Http){
   loginUser(email:string,password:string){
      return this.http.post("/login",{email,password});
    }
+
+  logoutUser(){
+    return this.http.post("/logout",{});
+  }
 }

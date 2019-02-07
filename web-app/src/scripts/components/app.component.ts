@@ -1,18 +1,25 @@
 declare var componentHandler: any;
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
-
+import {CookieService} from 'angular2-cookie/core';
+import {SessionService} from "../services/session.service";
 @Component({
   selector: 'my-app',
-  templateUrl: '../../views/app.component.html'
+  templateUrl: '../../views/app.component.html',
+  providers : [SessionService]
 })
 export class AppComponent {
 
   constructor(
-    private router:Router){}
+    private router:Router,
+    private _cookieService:CookieService,
+    private _sessionService:SessionService){}
   Logout(){
-    document.cookie = "sails.sid = ; expires= Thu, 01 Jan 1970 00:00:00: UTC1; path=/;";
-    this.router.navigate(['/login']);
+    this._sessionService.logoutUser().subscribe((response:any)=>{
+      localStorage.removeItem("session");
+      this.router.navigate(['/login']);
+    },(error:any)=>{});
+
   }
   
   ngAfterViewInit() {

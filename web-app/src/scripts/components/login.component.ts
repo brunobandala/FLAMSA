@@ -21,7 +21,7 @@ export class LoginComponent {
     public constructor(
         private router:Router, 
         private _sessionService : SessionService) {
-            // document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
+            document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
         }
 
 
@@ -31,6 +31,7 @@ export class LoginComponent {
         while (this.loginSection.hasChildNodes()){
             this.loginSection.removeChild(this.loginSection.firstChild);
         }
+
         var userText = document.createElement("span");
         userText.innerText = username;
         this.userSection.appendChild(userText);
@@ -39,7 +40,7 @@ export class LoginComponent {
     
     login(username:string, password: string) {
         this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
-            
+            this.construction(username);
             localStorage.setItem("session",JSON.stringify(res.json()));
             document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
             this.router.navigate(['/home']);

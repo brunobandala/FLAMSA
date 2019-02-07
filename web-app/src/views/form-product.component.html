@@ -11,25 +11,25 @@
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="boxing" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
+                <input formControlName="type" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
                 <label class="mdl-textfield__label">Embalaje</label>
                 <span class="mdl-textfield__error">Solo letras y numeros</span>
             </div>
-            <div style="color:red" *ngIf="myForm.get('boxing').hasError('required') && myForm.get('boxing').dirty">
+            <div style="color:red" *ngIf="myForm.get('type').hasError('required') && myForm.get('type').dirty">
                 Embalaje es requerido
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="typeTrailer" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
+                <input formControlName="trailerType" class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9]+">
                 <label class="mdl-textfield__label">Tipo de Remolque</label>
                 <span class="mdl-textfield__error">Solo letras y numeros</span>
             </div>
-            <div style="color:red" *ngIf="myForm.get('typeTrailer').hasError('required') && myForm.get('typeTrailer').dirty">
+            <div style="color:red" *ngIf="myForm.get('trailerType').hasError('required') && myForm.get('trailerType').dirty">
                 Tipo de Remolque es requerido
             </div>
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
-                <textarea class="mdl-textfield__input" type="text" id="obs"></textarea>
+                <textarea formControlName="description" class="mdl-textfield__input" type="text" id="obs"></textarea>
                 <label class="mdl-textfield__label" for="obs">Observaciones</label>
             </div>
             <br />
@@ -37,7 +37,11 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--red-A700 mdl-color-text--white" (click)="cancelarAlta()">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myForm.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
+                <button 
+                    (click)="onSubmit()" 
+                    [ngClass] = "{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myForm.invalid && !isUploadingContract)}"
+                    [disabled]="myForm.invalid" 
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
             </div>
