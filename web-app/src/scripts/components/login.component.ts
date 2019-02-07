@@ -14,6 +14,7 @@ import {ClientSessionService} from "../services/client.session.service";
 export class LoginComponent {
     userSection: any;
     loginSection: any;
+    showImage:boolean;
 
     ngAfterViewInit() {
         componentHandler.upgradeDom();
@@ -22,7 +23,12 @@ export class LoginComponent {
     public constructor(
         private router:Router, 
         private _sessionService : SessionService) {
-            document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
+            // document.getElementById("demo-menu-lower-left").setAttribute("disabled", "false");
+            if (screen.width<1024) 
+                this.showImage = false;
+            else{
+                this.showImage = true;
+            }
         }
 
 

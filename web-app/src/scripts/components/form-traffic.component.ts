@@ -22,6 +22,7 @@ export class FormTrafficComponent implements OnInit {
   routesCatalog: BasicCatalogWrapper[];
   productsCatalog: BasicCatalogWrapper[];
   contractRequest:any;
+  showTooltip:boolean;
 
 
   ngAfterViewInit() {
@@ -56,6 +57,12 @@ export class FormTrafficComponent implements OnInit {
       utility : ['',Validators.nullValidator]
 
     });
+
+    if (screen.width<1024) 
+      this.showTooltip = false;
+    else{
+      this.showTooltip = true;
+    }
 
   }
 

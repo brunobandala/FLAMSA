@@ -28,7 +28,10 @@ export class AppComponent {
   ngAfterViewInit() {
     componentHandler.upgradeDom();
   }
-
+  
+  navigation(){
+    this.router.navigate(['/home']);
+  }
 
 }
 

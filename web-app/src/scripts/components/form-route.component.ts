@@ -52,7 +52,7 @@ export class FormRouteComponent implements OnInit {
   selectedCheck(checkboxLabel: any, divCatalogSelected:any, divCatalog:any) {
     var indexList = 0;
 
-    if (divCatalogSelected.childNodes.length > divCatalog.childNodes.length) {
+    if (divCatalogSelected.childNodes.length >= divCatalog.childNodes.length) {
       indexList = divCatalogSelected.childNodes.length;
     }else{
       indexList = divCatalog.childNodes.length;

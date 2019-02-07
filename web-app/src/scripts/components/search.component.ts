@@ -68,6 +68,11 @@ export class SearchComponent implements OnInit{
         return this.formValid;
     }
 
+    deleteSelectedRow(selectedRow:any, divRows:any){
+        console.log(selectedRow);
+        console.log(divRows);
+    }
+
     buscar() {
         this.searching = true;
         this.selectedContract = false;

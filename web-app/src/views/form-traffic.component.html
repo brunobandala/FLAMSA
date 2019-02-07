@@ -2,103 +2,117 @@
 <section>
     <div class="mdl-grid">
         <form [formGroup]="myFormTraffic">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" formControlName="provider" name="provider" class="mdl-textfield__input" id="provider" readonly>
-                <label forControlName="provider" class="mdl-textfield__label">Proveedor</label>
-                <ul for="provider"
-                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu" 
-                    data-mdl-for="provider">
-                    <li 
-                        *ngFor="let provider of providersCatalog" 
-                        class="mdl-menu__item"
-                        (click)="selectCatalogItem(provider,'provider')">{{provider.name}}</li>
-                </ul>
+            <div class="mdl-cell--3-col-desktop">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input type="text" formControlName="provider" name="provider" class="mdl-textfield__input" id="provider" readonly>
+                    <label forControlName="provider" class="mdl-textfield__label">Proveedor</label>
+                    <ul for="provider"
+                        class="mdl-menu mdl-menu--bottom-left mdl-js-menu" 
+                        data-mdl-for="provider">
+                        <li 
+                            *ngFor="let provider of providersCatalog" 
+                            class="mdl-menu__item"
+                            (click)="selectCatalogItem(provider,'provider')">{{provider.name}}</li>
+                    </ul>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input type="text" formControlName="client" name="client" class="mdl-textfield__input" id="client" readonly>
+                    <label forControlName="client" class="mdl-textfield__label">Cliente</label>
+                    <ul for="client" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li 
+                            *ngFor="let client of clientsCatalog"
+                            class="mdl-menu__item"
+                            (click)="selectCatalogItem(client,'client')">{{client.name}}</li>
+                    </ul>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input type="text" formControlName="route" class="mdl-textfield__input" id="route" readonly>
+                    <input value="" type="hidden" name="route" />
+                    <label forControlName="route" class="mdl-textfield__label">Ruta</label>
+                    <ul for="route" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li 
+                            *ngFor="let route of routesCatalog"
+                            class="mdl-menu__item"
+                            (click)="selectCatalogItem(route,'route')">{{route.name}}</li>
+                    </ul>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input type="text" formControlName="product" class="mdl-textfield__input" id="product" readonly>
+                    <input value="" type="hidden" name="product" />
+                    <label forControlName="product" class="mdl-textfield__label">Producto</label>
+                    <ul for="product" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li 
+                            *ngFor="let product of productsCatalog"
+                            class="mdl-menu__item"
+                            (click)="selectCatalogItem(product,'product')">{{product.name}}</li>
+                    </ul>
+                </div>
             </div>
-            <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" formControlName="client" name="client" class="mdl-textfield__input" id="client" readonly>
-                <label forControlName="client" class="mdl-textfield__label">Cliente</label>
-                <ul for="client" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li 
-                        *ngFor="let client of clientsCatalog"
-                        class="mdl-menu__item"
-                        (click)="selectCatalogItem(client,'client')">{{client.name}}</li>
-                </ul>
+            <div class="mdl-grid mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col-desktop rs">
+                    <input formControlName="tariffProvider" class="mdl-textfield__input" type="number">
+                    <label class="mdl-textfield__label">Tarifa proveedor</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col-desktop mdl-cell--1-offset-desktop rs">
+                    <input formControlName="tariffClient" class="mdl-textfield__input" type="number">
+                    <label class="mdl-textfield__label">Tarifa cliente</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col-desktop mdl-cell--1-offset-desktop">
+                    <input class="mdl-textfield__input" formControlName="utility" type="number">
+                    <label class="mdl-textfield__label">Utilidad</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col-desktop mdl-cell--1-offset-desktop">
+                    <input formControlName="accessories" class="mdl-textfield__input" type="number">
+                    <label class="mdl-textfield__label">Accesorios</label>
+                </div>
             </div>
-            <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" formControlName="route" class="mdl-textfield__input" id="route" readonly>
-                <input value="" type="hidden" name="route" />
-                <label forControlName="route" class="mdl-textfield__label">Ruta</label>
-                <ul for="route" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li 
-                        *ngFor="let route of routesCatalog"
-                        class="mdl-menu__item"
-                        (click)="selectCatalogItem(route,'route')">{{route.name}}</li>
-                </ul>
-            </div>
-            <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                <input type="text" formControlName="product" class="mdl-textfield__input" id="product" readonly>
-                <input value="" type="hidden" name="product" />
-                <label forControlName="product" class="mdl-textfield__label">Producto</label>
-                <ul for="product" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li 
-                        *ngFor="let product of productsCatalog"
-                        class="mdl-menu__item"
-                        (click)="selectCatalogItem(product,'product')">{{product.name}}</li>
-                </ul>
-            </div>
-            <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rs">
-                <input formControlName="tariffProvider" class="mdl-textfield__input" type="number">
-                <label class="mdl-textfield__label">Tarifa proveedor</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label rs">
-                <input formControlName="tariffClient" class="mdl-textfield__input" type="number">
-                <label class="mdl-textfield__label">Tarifa cliente</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" formControlName="utility" type="number">
-                <label class="mdl-textfield__label">Utilidad</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="accessories" class="mdl-textfield__input" type="number">
-                <label class="mdl-textfield__label">Accesorios</label>
-            </div>
-            <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="factureProvider"class="mdl-textfield__input" type="number">
-                <label class="mdl-textfield__label">Factura proveedor</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-offset">
-                <input formControlName="factureFlamsa" class="mdl-textfield__input" type="number">
-                <label class="mdl-textfield__label">Factura FLAMSA</label>
-            </div>
-            <br />
             <div class="mdl-grid">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input formControlName="factureProvider"class="mdl-textfield__input" type="number">
+                    <label class="mdl-textfield__label">Factura proveedor</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-offset-desktop">
+                    <input formControlName="factureFlamsa" class="mdl-textfield__input" type="number">
+                    <label class="mdl-textfield__label">Factura FLAMSA</label>
+                </div>
+            </div>
+            <div class="mdl-grid">
+                <div id="dateCharge" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-col-desktop">
                     <input formControlName="loadDate" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label">Fecha de carga</label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div *ngIf="showTooltip" class="mdl-tooltip mdl-tooltip--large" for="dateCharge">
+                    Fecha de carga
+                </div>
+                <div id="documentDate" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-col-desktop mdl-cell--1-offset-desktop">
                     <input formControlName="documentsDate" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label">Fecha de documentos</label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                <div *ngIf="showTooltip" class="mdl-tooltip mdl-tooltip--large" for="documentDate">
+                    Fecha de documentos
+                </div>
+                <div id="payDate" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-col-desktop mdl-cell--1-offset-desktop">
                     <input formControlName="billDate" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label">Fecha de cobro</label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                <div *ngIf="showTooltip" class="mdl-tooltip mdl-tooltip--large" for="payDate">
+                    Fecha de cobro
+                </div>
+                <div id="payProvider" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-col-desktop mdl-cell--1-offset-desktop">
                     <input formControlName="providerPayDate" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label">Fecha pago proveedor</label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--2-col">
+                <div *ngIf="showTooltip" class="mdl-tooltip mdl-tooltip--large" for="payProvider">
+                    Fecha pago proveedor
+                </div>
+                <div id="payFLamsa" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--1-col-desktop mdl-cell--1-offset-desktop">
                     <input formControlName="flamsaPayDate" class="mdl-textfield__input" type="text">
                     <label class="mdl-textfield__label">Fecha pago FLAMSA</label>
                 </div>
+                <div *ngIf="showTooltip" class="mdl-tooltip mdl-tooltip--large" for="payFLamsa">
+                    Fecha pago FLAMSA
+                </div>
             </div>
-            <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label obs">
                 <textarea formControlName="observations"  class="mdl-textfield__input" type="text" id="obs"></textarea>
                 <label class="mdl-textfield__label" for="obs">Observaciones</label>
