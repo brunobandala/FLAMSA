@@ -22,10 +22,10 @@
                     <div class="mdl-card__title">
                         <p>Tramos de Catalogo</p>
                     </div>
-                    <div id="divSelectedStretches" class="mdl-card__supporting-text">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" *ngFor="let route of routes">
-                            <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck(catalog.innerText);">
-                            <span #catalog class="mdl-checkbox__label">{{route.route_name}}</span>
+                    <div id="divSelectedStretches" class="mdl-card__supporting-text" *ngFor="let route of routes">
+                        <label #catalog class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck(catalog);">
+                            <span class="mdl-checkbox__label">{{route.route_name}}</span>
                         </label>
                     </div>
                 </div>
