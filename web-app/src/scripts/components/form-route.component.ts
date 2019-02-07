@@ -1,5 +1,6 @@
 declare var componentHandler: any;
 
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -59,11 +60,13 @@ export class FormRouteComponent implements OnInit {
     }
 
     for (let index = 0; index < indexList; index++) {
-      if (divCatalog.childNodes[index] == checkboxLabel) {
+      if (divCatalog.childNodes[index] === checkboxLabel) {
         divCatalogSelected.appendChild(checkboxLabel);
+        console.log(divCatalog);
       }else{
         if (divCatalogSelected.childNodes[index] == checkboxLabel) {
           divCatalog.appendChild(checkboxLabel);
+          console.log(divCatalogSelected);
         }
       }
     }

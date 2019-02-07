@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import {SessionService} from "../services/session.service";
 import {Response} from "@angular/http";
 import {ClientSessionService} from "../services/client.session.service";
+export let GlobalVariable:any;
 
 @Component({
     selector: "login",
@@ -33,9 +34,14 @@ export class LoginComponent {
 
 
     construction(username: string){
+        GlobalVariable = {
+            username: username,
+            status: 'logueado'
+        };
     }
     
     login(username:string, password: string) {
+        this.construction(username);
         this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
             this.construction(username);
             localStorage.setItem("session",JSON.stringify(res.json()));

@@ -123,14 +123,14 @@
                     Cancelar
                 </button>
                 <button 
-                (click)="onSubmit('guardar')" 
+                (click)="onSubmit('guardado')" 
                 [disabled]="myFormTraffic.invalid"
                 [ngClass] = "{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myFormTraffic.invalid)}" 
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
                 <button 
-                (click)="onSubmit('finalizar')" 
+                (click)="onSubmit('finalizado')" 
                 [disabled]="myFormTraffic.invalid"
                 [ngClass] = "{'mdl-color--green-700 mdl-color-text--white' : (!myFormTraffic.invalid)}"
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
