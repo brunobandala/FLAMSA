@@ -49,22 +49,23 @@ export class FormRouteComponent implements OnInit {
     }
   }
 
-  selectedCheck(checkbox: any) {
-    console.log(checkbox);
-    // this.routes.forEach(element => {
-    //   if (element.route_name == checkbox) {
-    //     this.selected.push(element);
-    //     this.routes = this.routes.filter((e) => e.route_name != element.route_name);
-    //   }
-    // });
-  }
+  selectedCheck(checkboxLabel: any, divCatalogSelected:any, divCatalog:any) {
+    var indexList = 0;
 
-  selectedCheck2(checkbox: any) {
-    this.selected.forEach((element: any) => {
-      if (element.route_name == checkbox) {
-        this.routes.push(element);
-        this.selected = this.selected.filter((sel:any) => sel.route_name != element.route_name);
+    if (divCatalogSelected.childNodes.length > divCatalog.childNodes.length) {
+      indexList = divCatalogSelected.childNodes.length;
+    }else{
+      indexList = divCatalog.childNodes.length;
+    }
+
+    for (let index = 0; index < indexList; index++) {
+      if (divCatalog.childNodes[index] == checkboxLabel) {
+        divCatalogSelected.appendChild(checkboxLabel);
+      }else{
+        if (divCatalogSelected.childNodes[index] == checkboxLabel) {
+          divCatalog.appendChild(checkboxLabel);
+        }
       }
-    });
+    }
   }
 }
