@@ -3,7 +3,7 @@ declare var componentHandler: any;
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'form-route',
@@ -12,6 +12,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormRouteComponent implements OnInit {
   myFormRoute: FormGroup;
   showImage:boolean;
+  dialog:any;
+  toast:any;
   
   routes = [{
     id: 1,
@@ -28,9 +30,9 @@ export class FormRouteComponent implements OnInit {
   }]
 
   selected: any;
-  routesSelected: any;
+  routesSelected: any[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router:Router) {
     if (screen.width < 1024)
       this.showImage = false;
     else {
@@ -39,12 +41,40 @@ export class FormRouteComponent implements OnInit {
 
   }
 
+  nuevoRegistro(){
+    this.dialog.close();
+    this.myFormRoute.reset();
+
+    for (const key in this.myFormRoute.controls) {
+      this.myFormRoute.get(key).clearValidators();
+      this.myFormRoute.get(key).updateValueAndValidity();
+    }
+
+    var nodeList = document.querySelectorAll('.mdl-textfield');
+    Array.prototype.forEach.call(nodeList, function (elem:any) {
+        elem.MaterialTextfield.checkDirty();
+    });
+
+}
+
+cancelarAlta(){
+  let toast:any;
+  toast = document.querySelector('.mdl-js-snackbar');
+  toast.MaterialSnackbar.showSnackbar({message : "Redirigiendo...", timeout: 1000});
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 1000);
+}
+
   ngOnInit() {
     this.myFormRoute = this.fb.group({
       name: ['', Validators.required],
       km: ['', Validators.required]
     });
     this.selected = [];
+
+    this.dialog = document.querySelector('dialog');
+    this.toast = document.querySelector('.mdl-js-snackbar');
   }
 
   ngAfterViewInit() {
@@ -52,24 +82,20 @@ export class FormRouteComponent implements OnInit {
   }
 
   onSubmit() {
-    this.routesSelected = document.getElementsByName("routesSelected");
-    for (let i = 0; i < this.routesSelected.length; i++) {
-      const element = this.routesSelected[i];
-    }
+//    this.routesSelected = document.getElementsByName("routesSelected");
+ //   for (let i = 0; i < this.routesSelected.length; i++) {
+  //    const element = this.routesSelected[i];
+   // }
   }
 
-  selectedCheck(checkboxLabel: any, divCatalogSelected:any, divCatalog:any) {
-    console.log('method: searchInDivCatalogSelected() value='+this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected));
-    console.log('method: searchInDivCatalog() value='+this.searchInDivCatalog(checkboxLabel, divCatalog));
-    if (this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected) && !this.searchInDivCatalog(checkboxLabel,divCatalog)) {
-      divCatalog.appendChild(checkboxLabel);
-    }else{
-      if (!this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected) && this.searchInDivCatalog(checkboxLabel,divCatalog)) {
-        divCatalogSelected.appendChild(checkboxLabel);
-      } else {
-        divCatalog.appendChild(checkboxLabel);
-      }
-    }
+  selectedCheck2(route:any,collectionName:string,collectionTarget:string) {
+    var index = this[collectionName].findIndex((croute:any) => croute.id == route.id);
+    this[collectionTarget].push(route);
+    this[collectionName].splice(index,1);
+    setTimeout(() => {
+      componentHandler.upgradeDom();
+    }, 20);
+
   }
 
   searchInDivCatalogSelected(checkbox:any, divCatalogSelected:any){
