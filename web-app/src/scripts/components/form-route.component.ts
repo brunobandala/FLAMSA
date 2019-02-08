@@ -11,7 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class FormRouteComponent implements OnInit {
   myFormRoute: FormGroup;
-
+  showImage:boolean;
+  
   routes = [{
     id: 1,
     route_name: "A"
@@ -29,7 +30,14 @@ export class FormRouteComponent implements OnInit {
   selected: any;
   routesSelected: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+    if (screen.width < 1024)
+      this.showImage = false;
+    else {
+      this.showImage = true;
+    }
+
+  }
 
   ngOnInit() {
     this.myFormRoute = this.fb.group({

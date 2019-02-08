@@ -2,3 +2,9 @@
 node_modules/
 
 dist/
+
+builds/platforms/
+
+cordova-apk-result-debug/
+
+builds/hooks/

@@ -30,6 +30,6 @@ export class InterceptedHttp extends Http {
     }
 
     private updateUrl(url:string){
-        return "http://192.168.1.80:1337"+url;
+        return "http://localhost:1337"+url;
     }
 }
