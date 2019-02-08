@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {FilesService} from "../services/files.service";
 import {ClientsService} from "../services/clients.service";
 import {Response} from "@angular/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'form-client',
@@ -15,6 +16,7 @@ export class FormClientComponent implements OnInit {
   myForm: FormGroup;
   isUploadingContract:boolean[];
   toast:any;
+  dialog:any;
   paymentProcessFilename:string;
   contractFilename:string;
 
@@ -26,12 +28,14 @@ export class FormClientComponent implements OnInit {
   constructor(
       private fb: FormBuilder,
       private _filesService:FilesService,
-      private _clientsService:ClientsService) {
+      private _clientsService:ClientsService,
+      private router:Router) {
         this.isUploadingContract = [];
         this.isUploadingContract[0] = false;
         this.isUploadingContract[1] = false;
         this.paymentProcessFilename = '';
         this.contractFilename = '';
+        this.dialog = document.querySelector('dialog');
         this.toast = document.querySelector('.mdl-js-snackbar');
       }
 
@@ -48,6 +52,7 @@ export class FormClientComponent implements OnInit {
       creditDays: ['', [Validators.required, Validators.maxLength(2), Validators.pattern(/^[0-9]+$/)]],
       observations :['',Validators.nullValidator]
     });
+    this.dialog = document.querySelector('dialog');
   }
 
   checkDirty(){
@@ -76,9 +81,37 @@ export class FormClientComponent implements OnInit {
 
   onSubmit() {
     this._clientsService.createClient(this.myForm.value).subscribe((response:Response)=>{
+      this.dialog.showModal();
       this.toast.MaterialSnackbar.showSnackbar(
         {message : "Se guardó al cliente con éxito"});
     });
   }
+
+  nuevoRegistro(){
+    this.dialog.close();
+    this.myForm.reset();
+    this.paymentProcessFilename = "";
+    this.contractFilename = "";
+    this.checkDirty();
+    for (const key in this.myForm.controls) {
+      this.myForm.get(key).clearValidators();
+      this.myForm.get(key).updateValueAndValidity();
+    }
+
+    var nodeList = document.querySelectorAll('.mdl-textfield');
+    Array.prototype.forEach.call(nodeList, function (elem:any) {
+        elem.MaterialTextfield.checkDirty();
+    });
+
+}
+
+cancelarAlta(){
+  let toast:any;
+  toast = document.querySelector('.mdl-js-snackbar');
+  toast.MaterialSnackbar.showSnackbar({message : "Redirigiendo...", timeout: 1000});
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 1000);
+}
 
 }
