@@ -88,7 +88,7 @@ cancelarAlta(){
    // }
   }
 
-  selectedCheck2(route:any,collectionName:string,collectionTarget:string) {
+  selectedCheck(route:any,collectionName:string,collectionTarget:string) {
     var index = this[collectionName].findIndex((croute:any) => croute.id == route.id);
     this[collectionTarget].push(route);
     this[collectionName].splice(index,1);
@@ -98,25 +98,4 @@ cancelarAlta(){
 
   }
 
-  searchInDivCatalogSelected(checkbox:any, divCatalogSelected:any){
-    var validate:boolean = false;
-    divCatalogSelected.childNodes.forEach((element: any) => {
-      if (element == checkbox) {
-        validate = true;
-      }
-    });
-
-    return validate;
-  }
-
-  searchInDivCatalog(checkbox:any, divCatalog:any){
-    var validate:boolean = false;
-    divCatalog.childNodes.forEach((element: any) => {
-      if (element == checkbox) {
-        validate = true;
-      }
-    });
-
-    return validate;
-  }
 }
