@@ -55,12 +55,11 @@
             </nav>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <div *ngIf="user == undefined">
+                <div id="loginSection">
                     <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">Inicia Sesión</a>
                 </div>
-                <div *ngIf="user != undefined" class="demo-drawer-header" hidden="true">
+                <div id="userSection" class="demo-drawer-header" hidden="true">
                     <img src="../scripts/assets/user.jpg" class="demo-avatar-user">
-                    <span>{{ user.username }}</span>
                     <button id="demo-menu-lower-left2" class="mdl-button mdl-js-button mdl-button--icon">
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
                     </button>

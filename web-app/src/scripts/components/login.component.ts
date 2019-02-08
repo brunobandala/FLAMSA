@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import {SessionService} from "../services/session.service";
 import {Response} from "@angular/http";
 import {ClientSessionService} from "../services/client.session.service";
+import { EventEmitter } from "events";
 export let GlobalVariable:any;
 
 @Component({
@@ -34,14 +35,18 @@ export class LoginComponent {
 
 
     construction(username: string){
-        GlobalVariable = {
-            username: username,
-            status: 'logueado'
-        };
+        this.userSection = document.getElementById("userSection");
+        this.loginSection = document.getElementById("loginSection");
+        while (this.loginSection.hasChildNodes()){
+            this.loginSection.removeChild(this.loginSection.firstChild);
+        }
+        var userText = document.createElement("span");
+        userText.innerText = username;
+        this.userSection.appendChild(userText);
+        this.userSection.removeAttribute("hidden");
     }
     
     login(username:string, password: string) {
-        this.construction(username);
         this._sessionService.loginUser(username,password).subscribe((res:Response)=>{
             this.construction(username);
             localStorage.setItem("session",JSON.stringify(res.json()));
