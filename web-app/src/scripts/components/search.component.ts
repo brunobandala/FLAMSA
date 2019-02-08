@@ -1,33 +1,40 @@
 declare var componentHandler: any;
 
-import { Component, OnInit, ChangeDetectionStrategy,  OnChanges} from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from "@angular/core";
 import { SearchContract } from "../models/searchContract.interface";
-import {ContractsService} from "../services/contracts.service";
-import {Response} from "@angular/http";
+import { ContractsService } from "../services/contracts.service";
+import { Response } from "@angular/http";
 
 @Component({
     selector: 'search',
     templateUrl: '../../views/search.component.html',
-    providers :[ContractsService],
-    changeDetection : ChangeDetectionStrategy.Default
+    providers: [ContractsService],
+    changeDetection: ChangeDetectionStrategy.Default
 })
 
-export class SearchComponent implements OnInit{
+export class SearchComponent implements OnInit {
 
     searchObject: SearchContract;
     results: Array<any>;
     selectedContract: boolean;
     saveContract: boolean;
     totalContractsIsEmpty: boolean = false;
-    toast:any;
-    searching:boolean;
-    formValid:boolean;
+    toast: any;
+    searching: boolean;
+    formValid: boolean;
+    showImage:boolean;
 
     ngAfterViewInit() {
         componentHandler.upgradeDom();
     }
 
-    constructor(private _contractsService:ContractsService) {
+    constructor(private _contractsService: ContractsService) {
+        if (screen.width < 1024)
+            this.showImage = false;
+        else {
+            this.showImage = true;
+        }
+
         this.toast = document.querySelector('.mdl-js-snackbar');
     }
 
@@ -40,24 +47,24 @@ export class SearchComponent implements OnInit{
 
     }
 
-    retrieveInfo(){
-        this._contractsService.searchContract(this.searchObject).subscribe((response:Response)=>{
+    retrieveInfo() {
+        this._contractsService.searchContract(this.searchObject).subscribe((response: Response) => {
             this.results = response.json();
             console.log(this.results);
-            if(this.results.length > 0){
+            if (this.results.length > 0) {
                 this.totalContractsIsEmpty = false;
             }
 
-            
 
-        },(error:any)=>{
+
+        }, (error: any) => {
             this.toast.MaterialSnackbar.showSnackbar(
-                {message : "Ocurrió un error al guardar el proveedor"});
+                { message: "Ocurrió un error al guardar el proveedor" });
         });
         this.searching = false;
     }
 
-    isAtLeastOneValidField(){
+    isAtLeastOneValidField() {
         this.formValid = false;
         for (var value of Object.keys(this.searchObject)) {
             if (this.searchObject[value] != '') {
@@ -68,7 +75,7 @@ export class SearchComponent implements OnInit{
         return this.formValid;
     }
 
-    deleteSelectedRow(selectedRow:any, divRows:any){
+    deleteSelectedRow(selectedRow: any, divRows: any) {
         console.log(selectedRow);
         console.log(divRows);
 
@@ -76,7 +83,7 @@ export class SearchComponent implements OnInit{
             if (divRows.childNodes[index] == selectedRow) {
                 divRows.removeChild(divRows.childNodes[index]);
             }
-            
+
         }
     }
 
@@ -84,9 +91,9 @@ export class SearchComponent implements OnInit{
         this.searching = true;
         this.selectedContract = false;
 
-        if(this.isAtLeastOneValidField()){
+        if (this.isAtLeastOneValidField()) {
             this.retrieveInfo();
-        }else{
+        } else {
             this.results = [];
             this.totalContractsIsEmpty = true;
             this.searching = false;
