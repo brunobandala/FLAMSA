@@ -1,20 +1,17 @@
 declare var componentHandler: any;
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { CookieService } from 'angular2-cookie/core';
 import { SessionService } from "../services/session.service";
 import { ClientSessionService } from "../services/client.session.service";
-import { GlobalVariable } from "../components/login.component";
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'my-app',
   templateUrl: '../../views/app.component.html',
   providers: [SessionService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   showFooter:boolean;
-  user:any;
 
   constructor(
     private router: Router,
@@ -39,17 +36,8 @@ export class AppComponent implements OnInit {
   ngAfterViewInit() {
     componentHandler.upgradeDom();
   }
-  async reloadData():Promise<void> {
-    this.user = await GlobalVariable;
-  }
-  
-  ngOnInit(){
-    this.activatedRoute.url
-      .subscribe(url => console.log('The URL changed to: ' + url));
-  }
+
   navigation(){
-    console.log(this.user);
-    console.log(GlobalVariable);
     this.router.navigate(['/home']);
   }
 
