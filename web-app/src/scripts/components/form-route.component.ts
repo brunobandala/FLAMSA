@@ -51,24 +51,36 @@ export class FormRouteComponent implements OnInit {
   }
 
   selectedCheck(checkboxLabel: any, divCatalogSelected:any, divCatalog:any) {
-    var indexList = 0;
-
-    if (divCatalogSelected.childNodes.length >= divCatalog.childNodes.length) {
-      indexList = divCatalogSelected.childNodes.length;
+    if (this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected) && !this.searchInDivCatalog(checkboxLabel,divCatalog)) {
+      divCatalog.appendChild(checkboxLabel);
     }else{
-      indexList = divCatalog.childNodes.length;
+      divCatalogSelected.appendChild(checkboxLabel);
     }
+  }
 
-    for (let index = 0; index < indexList; index++) {
-      if (divCatalog.childNodes[index] === checkboxLabel) {
-        divCatalogSelected.appendChild(checkboxLabel);
-        console.log(divCatalog);
+  searchInDivCatalogSelected(checkbox:any, divCatalogSelected:any){
+    var validate:boolean;
+    divCatalogSelected.childNodes.forEach((element: any) => {
+      if (element == checkbox) {
+        validate = true;
       }else{
-        if (divCatalogSelected.childNodes[index] == checkboxLabel) {
-          divCatalog.appendChild(checkboxLabel);
-          console.log(divCatalogSelected);
-        }
+        validate = false;
       }
-    }
+    });
+
+    return validate;
+  }
+
+  searchInDivCatalog(checkbox:any, divCatalog:any){
+    var validate:boolean;
+    divCatalog.childNodes.forEach((element: any) => {
+      if (element == checkbox) {
+        validate = true;
+      }else{
+        validate = false;
+      }
+    });
+
+    return validate;
   }
 }
