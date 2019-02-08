@@ -3,23 +3,17 @@
     "displayName": "FletesApp",
     "version": "1.0.0",
     "description": "test app para fletes",
-    "build": {
-        "appId": "com.app.flamsa",
-        "files": "./dist/**/*",
-        "productName": "FLAMSA"
-    },
+    "main": "electron.init.js",
     "scripts": {
-        "assemble-apk-dev" : "npx copyfiles builds/platforms/android/app/build/outputs/apk/debug/*.apk hdfhghgfzdhddfghh",
-        "construct-cordova-dev" : "npm run build-cordova-dev && npm run create-apk-dev",
-        "create-apk-dev" : "npx copyfiles package.json builds && cd builds && npm i && cordova build android --verbose && cd ../ ",
-        "build-cordova-dev" : "npm run build-dev && npx copyfiles 'dist/*.js' 'builds/www' && npx copyfiles 'dist/assets/*.*' 'builds/www/assets'",
+        "package-desktop-dev": "npm run build-dev && npx copyfiles package.json dist && npx copyfiles electron.builder.js dist && npx electron-packager ./dist flamsa-executable-dev --overwrite && node electron.builder.js",
+        "assemble-apk-dev": "npx copyfiles -f builds/platforms/android/app/build/outputs/apk/debug/*.apk cordova-apk-result-debug",
+        "construct-cordova-dev": "npm run build-cordova-dev && npm run create-apk-dev",
+        "create-apk-dev": "npx copyfiles package.json builds && cd builds && npm i && cordova build android --verbose && cd ../ ",
+        "build-cordova-dev": "npm run build-dev && npx copyfiles 'dist/*.js' 'builds/www' && npx copyfiles 'dist/assets/*.*' 'builds/www/assets'",
         "serve-dev": "npm run build-dev && npm-run-all -p webpack-run-dev start-desktop-dev",
         "start-desktop-dev": "wait-on http-get://localhost:9001/ && electron ./electron.init.js  --web",
         "build-dev": "webpack",
-        "webpack-run-dev": "webpack-dev-server",
-        "pack": "npm run build-dev && electron-builder --dir",
-        "dist": "npm run build-dev && electron-builder",
-        "postinstall": "electron-builder install-app-deps"
+        "webpack-run-dev": "webpack-dev-server"
     },
     "devDependencies": {
         "@types/angular": "^1.6.32",
@@ -32,7 +26,9 @@
         "css-loader": "^2.0.0",
         "electron": "^3.0.7",
         "electron-builder": "^20.28.4",
+        "electron-packager": "^13.0.1",
         "electron-reload": "^1.4.0",
+        "electron-winstaller": "^2.7.0",
         "extract-loader": "^1.0.2",
         "extract-text-webpack-plugin": "^3.0.0",
         "file-loader": "^1.1.11",

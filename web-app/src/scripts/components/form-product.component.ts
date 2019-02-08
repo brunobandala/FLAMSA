@@ -15,6 +15,7 @@ export class FormProductComponent implements OnInit {
   myForm: FormGroup;
   dialog:any;
   toast:any;
+  showImage:boolean;
 
   constructor(
       private fb: FormBuilder, 
@@ -27,6 +28,12 @@ export class FormProductComponent implements OnInit {
       trailerType : ['', Validators.required],
       description : ['', Validators.nullValidator]
     });
+
+    if (screen.width < 1024)
+      this.showImage = false;
+    else {
+      this.showImage = true;
+    }
 
     this.dialog = document.querySelector('dialog');
     this.toast = document.querySelector('.mdl-js-snackbar');
