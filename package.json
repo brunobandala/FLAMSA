@@ -9,10 +9,10 @@
         "productName": "FLAMSA"
     },
     "scripts": {
-        "assemble-apk-dev": "npx copyfiles builds/platforms/android/app/build/outputs/apk/debug/*.apk hdfhghgfzdhddfghh",
-        "construct-cordova-dev": "npm run build-cordova-dev && npm run create-apk-dev",
-        "create-apk-dev": "npx copyfiles package.json builds && cd builds && npm i && cordova build android --verbose && cd ../ ",
-        "build-cordova-dev": "npm run build-dev && npx copyfiles 'dist/*.js' 'builds/www' && npx copyfiles 'dist/assets/*.*' 'builds/www/assets'",
+        "assemble-apk-dev" : "npx copyfiles builds/platforms/android/app/build/outputs/apk/debug/*.apk hdfhghgfzdhddfghh",
+        "construct-cordova-dev" : "npm run build-cordova-dev && npm run create-apk-dev",
+        "create-apk-dev" : "npx copyfiles package.json builds && cd builds && npm i && cordova build android --verbose && cd ../ ",
+        "build-cordova-dev" : "npm run build-dev && npx copyfiles 'dist/*.js' 'builds/www' && npx copyfiles 'dist/assets/*.*' 'builds/www/assets'",
         "serve-dev": "npm run build-dev && npm-run-all -p webpack-run-dev start-desktop-dev",
         "start-desktop-dev": "wait-on http-get://localhost:9001/ && electron ./electron.init.js  --web",
         "build-dev": "webpack",
