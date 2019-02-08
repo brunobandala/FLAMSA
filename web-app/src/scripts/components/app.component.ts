@@ -27,6 +27,12 @@ export class AppComponent {
 
   Logout() {
     this._sessionService.logoutUser().subscribe((response: any) => {
+      let nav:HTMLElement = document.getElementById("navLogged");
+      let user:HTMLElement = document.getElementById("userSection");
+      let login:HTMLElement = document.getElementById("loginSection");
+      user.setAttribute("hidden","true");
+      nav.setAttribute("hidden","true");
+      login.removeAttribute("hidden");
       localStorage.removeItem("session");
       this.router.navigate(['/login']);
     }, (error: any) => { });

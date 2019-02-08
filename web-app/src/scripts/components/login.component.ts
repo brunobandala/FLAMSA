@@ -37,12 +37,9 @@ export class LoginComponent {
         let nav:any = document.getElementById("navLogged");
         this.userSection = document.getElementById("userSection");
         this.loginSection = document.getElementById("loginSection");
-        while (this.loginSection.hasChildNodes()){
-            this.loginSection.removeChild(this.loginSection.firstChild);
-        }
-        var userText = document.createElement("span");
+        this.loginSection.setAttribute("hidden","true");
+        var userText = document.getElementById("username");
         userText.innerText = username;
-        this.userSection.appendChild(userText);
         this.userSection.removeAttribute("hidden");
         nav.removeAttribute("hidden");
     }
