@@ -59,20 +59,24 @@ export class FormRouteComponent implements OnInit {
   }
 
   selectedCheck(checkboxLabel: any, divCatalogSelected:any, divCatalog:any) {
+    console.log('method: searchInDivCatalogSelected() value='+this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected));
+    console.log('method: searchInDivCatalog() value='+this.searchInDivCatalog(checkboxLabel, divCatalog));
     if (this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected) && !this.searchInDivCatalog(checkboxLabel,divCatalog)) {
       divCatalog.appendChild(checkboxLabel);
     }else{
-      divCatalogSelected.appendChild(checkboxLabel);
+      if (!this.searchInDivCatalogSelected(checkboxLabel, divCatalogSelected) && this.searchInDivCatalog(checkboxLabel,divCatalog)) {
+        divCatalogSelected.appendChild(checkboxLabel);
+      } else {
+        divCatalog.appendChild(checkboxLabel);
+      }
     }
   }
 
   searchInDivCatalogSelected(checkbox:any, divCatalogSelected:any){
-    var validate:boolean;
+    var validate:boolean = false;
     divCatalogSelected.childNodes.forEach((element: any) => {
       if (element == checkbox) {
         validate = true;
-      }else{
-        validate = false;
       }
     });
 
@@ -80,12 +84,10 @@ export class FormRouteComponent implements OnInit {
   }
 
   searchInDivCatalog(checkbox:any, divCatalog:any){
-    var validate:boolean;
+    var validate:boolean = false;
     divCatalog.childNodes.forEach((element: any) => {
       if (element == checkbox) {
         validate = true;
-      }else{
-        validate = false;
       }
     });
 
