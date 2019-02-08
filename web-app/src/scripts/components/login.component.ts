@@ -34,6 +34,7 @@ export class LoginComponent {
 
 
     construction(username: string){
+        let nav:any = document.getElementById("navLogged");
         this.userSection = document.getElementById("userSection");
         this.loginSection = document.getElementById("loginSection");
         while (this.loginSection.hasChildNodes()){
@@ -43,6 +44,7 @@ export class LoginComponent {
         userText.innerText = username;
         this.userSection.appendChild(userText);
         this.userSection.removeAttribute("hidden");
+        nav.removeAttribute("hidden");
     }
     
     login(username:string, password: string) {

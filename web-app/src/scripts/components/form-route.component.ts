@@ -82,10 +82,7 @@ cancelarAlta(){
   }
 
   onSubmit() {
-//    this.routesSelected = document.getElementsByName("routesSelected");
- //   for (let i = 0; i < this.routesSelected.length; i++) {
-  //    const element = this.routesSelected[i];
-   // }
+    this.routesSelected;
   }
 
   selectedCheck(route:any,collectionName:string,collectionTarget:string) {
