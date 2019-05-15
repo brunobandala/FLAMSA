@@ -1,5 +1,5 @@
 <section>
-    <div class="mdl-grid">
+    <div class="mdl-grid mdl-cell--12-col-desktop">
         <form [formGroup]="myFormRoute">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input formControlName="name" class="mdl-textfield__input" type="text">
@@ -7,35 +7,35 @@
             </div>
             <br>
             <div class="mdl-grid mdl-cell--order-2-phone">
-                <div class="mdl-cell--6-col-desktop">
+                <div class="mdl-cell--4-col-desktop">
                     <div class="mdl-card__title">
                         <p>Tramos de la Ruta</p>
                     </div>
                     <span *ngFor="let selectedRoute of routesSelected">
-                    <div id="divSelectedRoutes" #divCatalogSelected class="mdl-card__supporting-text">
+                    <span id="divSelectedRoutes" #divCatalogSelected class="mdl-card__supporting-text">
                         <label  class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                             <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck(selectedRoute,'routesSelected','routes');">
-                            <span class="mdl-checkbox__label">{{selectedRoute.route_name}}</span>
+                            <span class="mdl-checkbox__label">{{selectedRoute.name}}</span>
                         </label>
-                    </div>
+                    </span>
                 </span>
                 </div>
-                <div class="mdl-cell--6-col-desktop">
+                <div class="mdl-cell--4-col-desktop">
                     <div class="mdl-card__title">
                         <p>Tramos de Catalogo</p>
                     </div>
                     <span *ngFor="let route of routes" #divCatalog>
-                    <div id="divSelectedStretches"  class="mdl-card__supporting-text" #catalog>
+                    <span id="divSelectedStretches"  class="mdl-card__supporting-text" #catalog>
                         <label  class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                             <input type="checkbox" class="mdl-checkbox__input" (click)="selectedCheck(route,'routes','routesSelected');">
-                            <span class="mdl-checkbox__label">{{route.route_name}}</span>
+                            <span class="mdl-checkbox__label">{{route.name}}</span>
                         </label>
-                    </div>
+                    </span>
                 </span>
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input formControlName="km" class="mdl-textfield__input" type="text">
+                <input formControlName="distance" class="mdl-textfield__input" type="number">
                 <label class="mdl-textfield__label">Kilomentros</label>
             </div>
             <div class="button-container">
@@ -43,8 +43,9 @@
                   mdl-color--red-A700 mdl-color-text--white" routerLink="/home">
                     Cancelar
                 </button>
-                <button (click)="onSubmit()" [disabled]="myFormRoute.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
-                  mdl-color--light-blue-A700 mdl-color-text--white">
+                <button (click)="onSubmit()" 
+                [ngClass]="{'mdl-color--light-blue-A700 mdl-color-text--white' : (!myFormRoute.invalid)}"
+                    [disabled]="myFormRoute.invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Guardar
                 </button>
             </div>
@@ -64,5 +65,5 @@
     </div>
 </dialog>
 <span *ngIf="showImage">
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
 </span>

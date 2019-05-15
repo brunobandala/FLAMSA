@@ -9,6 +9,7 @@ import {ProductsService} from "../services/products.service";
 import {ContractsService} from "../services/contracts.service";
 import {BasicCatalogWrapper} from "../models/basicCatalogWrapper.interface";
 import {Response} from "@angular/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'form-traffic',
@@ -23,6 +24,8 @@ export class FormTrafficComponent implements OnInit {
   productsCatalog: BasicCatalogWrapper[];
   contractRequest:any;
   showTooltip:boolean;
+  dialog:any;
+  toast:any;
 
 
   ngAfterViewInit() {
@@ -34,7 +37,8 @@ export class FormTrafficComponent implements OnInit {
               private _clientsService:ClientsService,
               private _routesService:RoutesService,
               private _productsService:ProductsService,
-              private _contractsService:ContractsService) {
+              private _contractsService:ContractsService,
+              private router:Router) {
     this.contractRequest = {};
     let datePattern = Validators.pattern(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
 
@@ -73,13 +77,38 @@ export class FormTrafficComponent implements OnInit {
         elem.MaterialTextfield.checkDirty();
     });
 
-    document.querySelector("form > div:nth-child(1) > div").classList.remove("is-visible");
-    document.querySelector("form > div:nth-child(3) > div").classList.remove("is-visible");
-    document.querySelector("form > div:nth-child(5) > div").classList.remove("is-visible");
-    document.querySelector("form > div:nth-child(7) > div").classList.remove("is-visible");
+    document.querySelector("form > div.mdl-cell--3-col-desktop > div:nth-child(1) > div").classList.remove("is-visible");
+    document.querySelector("form > div.mdl-cell--3-col-desktop > div:nth-child(2) > div").classList.remove("is-visible");
+    document.querySelector("form > div.mdl-cell--3-col-desktop > div:nth-child(3) > div").classList.remove("is-visible");
+    document.querySelector("form > div.mdl-cell--3-col-desktop > div:nth-child(4) > div").classList.remove("is-visible");
     
 
   }
+
+  nuevoRegistro(){
+    this.dialog.close();
+    this.myFormTraffic.reset();
+
+    for (const key in this.myFormTraffic.controls) {
+      this.myFormTraffic.get(key).reset();
+      this.myFormTraffic.get(key).updateValueAndValidity();
+    }
+
+    var nodeList = document.querySelectorAll('.mdl-textfield');
+    Array.prototype.forEach.call(nodeList, function (elem:any) {
+        elem.MaterialTextfield.checkDirty();
+    });
+
+}
+
+cancelarAlta(){
+  let toast:any;
+  toast = document.querySelector('.mdl-js-snackbar');
+  toast.MaterialSnackbar.showSnackbar({message : "Redirigiendo...", timeout: 1000});
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 1000);
+}
 
   selectCatalogItem(item:BasicCatalogWrapper, form:string){
     console.log("selected item = "+item.name+" selected id="+item.id);
@@ -104,6 +133,9 @@ export class FormTrafficComponent implements OnInit {
     this._productsService.getAllProducts().subscribe((response:Response)=>{
       this.productsCatalog = response.json();
     });
+
+    this.dialog = document.querySelector('dialog');
+    this.toast = document.querySelector('.mdl-js-snackbar');
   }
 
   onSubmit(type:string) {
@@ -126,7 +158,7 @@ export class FormTrafficComponent implements OnInit {
 
 
     this._contractsService.saveContract(this.contractRequest).subscribe((response:Response)=>{
-      console.log(response.json());
+      this.dialog.showModal();
     });
   }
 

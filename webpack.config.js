@@ -14,7 +14,7 @@ module.exports = {
     }, 
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
+        publicPath: './',
         filename: 'fletes-[name].js',
         chunkFilename: 'fletes-[id].chunk.js'
   },

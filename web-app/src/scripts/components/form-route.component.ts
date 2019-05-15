@@ -1,13 +1,16 @@
 declare var componentHandler: any;
 
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import {StretchesService} from "../services/stretches.service";
+import {RoutesService} from "../services/routes.service";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'form-route',
   templateUrl: '../../views/form-route.component.html',
+  providers:[StretchesService,RoutesService]
 })
 export class FormRouteComponent implements OnInit {
   myFormRoute: FormGroup;
@@ -15,24 +18,16 @@ export class FormRouteComponent implements OnInit {
   dialog:any;
   toast:any;
   
-  routes = [{
-    id: 1,
-    route_name: "A"
-  }, {
-    id: 2,
-    route_name: "B"
-  }, {
-    id: 3,
-    route_name: "C"
-  }, {
-    id: 4,
-    route_name: "D"
-  }]
+  routes:any[];
 
   selected: any;
   routesSelected: any[] = [];
 
-  constructor(private fb: FormBuilder, private router:Router) {
+  constructor(
+      private fb: FormBuilder, 
+      private router:Router,
+      private _stretchesService:StretchesService,
+      private _routesService:RoutesService) {
     if (screen.width < 1024)
       this.showImage = false;
     else {
@@ -44,11 +39,15 @@ export class FormRouteComponent implements OnInit {
   nuevoRegistro(){
     this.dialog.close();
     this.myFormRoute.reset();
-
     for (const key in this.myFormRoute.controls) {
-      this.myFormRoute.get(key).clearValidators();
       this.myFormRoute.get(key).updateValueAndValidity();
     }
+
+    this.routes = this.routes.concat(this.routesSelected);
+    this.routesSelected = [];
+    setTimeout(() => {
+      componentHandler.upgradeDom();
+    }, 20);
 
     var nodeList = document.querySelectorAll('.mdl-textfield');
     Array.prototype.forEach.call(nodeList, function (elem:any) {
@@ -67,14 +66,20 @@ cancelarAlta(){
 }
 
   ngOnInit() {
+    componentHandler.upgradeDom();
     this.myFormRoute = this.fb.group({
       name: ['', Validators.required],
-      km: ['', Validators.required]
+      distance: ['', Validators.required]
     });
     this.selected = [];
 
     this.dialog = document.querySelector('dialog');
     this.toast = document.querySelector('.mdl-js-snackbar');
+
+    this._stretchesService.getAllStretches().subscribe((response:Response)=>{
+      this.routes = response.json();
+    });
+
   }
 
   ngAfterViewInit() {
@@ -82,7 +87,13 @@ cancelarAlta(){
   }
 
   onSubmit() {
-    this.routesSelected;
+    let request:any = this.myFormRoute.value;
+    request.stretches = this.routesSelected;
+
+    this._routesService.saveRoute(request).subscribe((response:any)=>{
+      this.dialog.showModal();
+    });
+
   }
 
   selectedCheck(route:any,collectionName:string,collectionTarget:string) {

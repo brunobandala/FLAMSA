@@ -5,11 +5,11 @@
     "description": "test app para fletes",
     "main": "electron.init.js",
     "scripts": {
-        "package-desktop-dev": "npm run build-dev && npx copyfiles package.json dist && npx copyfiles electron.builder.js dist && npx electron-packager ./dist flamsa-executable-dev --overwrite && node electron.builder.js",
+        "package-desktop-dev": "npm run build-dev && npx copyfiles package.json dist && npx copyfiles electron.init.js dist && npx electron-packager ./dist flamsa-executable-dev --overwrite && node electron.builder.js && rm -rf ./flamsa-executable-dev-win32-x64",
         "assemble-apk-dev": "npx copyfiles -f builds/platforms/android/app/build/outputs/apk/debug/*.apk cordova-apk-result-debug",
         "construct-cordova-dev": "npm run build-cordova-dev && npm run create-apk-dev",
         "create-apk-dev": "npx copyfiles package.json builds && cd builds && npm i && cordova build android --verbose && cd ../ ",
-        "build-cordova-dev": "npm run build-dev && npx copyfiles 'dist/*.js' 'builds/www' && npx copyfiles 'dist/assets/*.*' 'builds/www/assets'",
+        "build-cordova-dev": "rm -rf builds/www && npm run build-dev && npx copyfiles -f dist/*.* builds/www && npx copyfiles -f dist/assets/*.* builds/www/assets",
         "serve-dev": "npm run build-dev && npm-run-all -p webpack-run-dev start-desktop-dev",
         "start-desktop-dev": "wait-on http-get://localhost:9001/ && electron ./electron.init.js  --web",
         "build-dev": "webpack",

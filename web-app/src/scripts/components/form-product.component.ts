@@ -64,15 +64,9 @@ export class FormProductComponent implements OnInit {
 
   nuevoRegistro(){
       this.dialog.close();
-      this.myForm.setValue({
-        name: null,
-        type: null,
-        trailerType: null,
-        description : null
-      });
+      this.myForm.reset();
 
       for (const key in this.myForm.controls) {
-        this.myForm.get(key).clearValidators();
         this.myForm.get(key).updateValueAndValidity();
       }
 

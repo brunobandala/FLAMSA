@@ -16,6 +16,7 @@ import { SimplePdfViewerComponent } from 'simple-pdf-viewer';
 export class FormComponent implements OnInit {
   myForm: FormGroup;
   toast:any;
+  dialog:any;
   isUploadingContract:Boolean;
   
   @ViewChild(SimplePdfViewerComponent) 
@@ -32,6 +33,8 @@ export class FormComponent implements OnInit {
     
       this.isUploadingContract = false;
       this.toast = document.querySelector('.mdl-js-snackbar');
+      this.dialog = document.querySelector('dialog');
+
     }
 
   ngOnInit() {
@@ -47,18 +50,44 @@ export class FormComponent implements OnInit {
       details : ['',Validators.nullValidator],
       filename : ['',Validators.required]
     });
+    this.dialog = document.querySelector('dialog');
+
   }
 
   onSubmit() {
     this._providersService.saveProvider(this.myForm.value).subscribe((response:Response)=>{
       this.toast.MaterialSnackbar.showSnackbar({message:"Guardado con éxito!"});
-      this.router.navigate(['/home']);
+      this.dialog.showModal();
     },(error:any) =>{
       this.toast.MaterialSnackbar.showSnackbar(
         {message : "Ocurrió un error al guardar el proveedor"});
 
     });
   }
+
+  nuevoRegistro(){
+    this.dialog.close();
+    this.myForm.reset();
+
+    for (const key in this.myForm.controls) {
+      this.myForm.get(key).updateValueAndValidity();
+    }
+
+    var nodeList = document.querySelectorAll('.mdl-textfield');
+    Array.prototype.forEach.call(nodeList, function (elem:any) {
+        elem.MaterialTextfield.checkDirty();
+    });
+
+}
+
+cancelarAlta(){
+  let toast:any;
+  toast = document.querySelector('.mdl-js-snackbar');
+  toast.MaterialSnackbar.showSnackbar({message : "Redirigiendo...", timeout: 1000});
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 1000);
+}
 
   saveContract(event:FileList){
     let file:File = event.item(0);

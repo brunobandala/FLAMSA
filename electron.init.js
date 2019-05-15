@@ -16,7 +16,6 @@ function createWindow () {
   });
 
   mainWindow.setMenu(null);
-  
   if(process.argv.slice(1).some(val => val === '--web')){
     require('electron-reload')(__dirname,{
       electron: require(`${__dirname}/node_modules/electron`)
@@ -24,7 +23,7 @@ function createWindow () {
     mainWindow.loadURL('http://localhost:9001/');
   
   }else{
-    mainWindow.loadFile('./dist/index.html');
+    mainWindow.loadFile('./index.html');
   }
 
 

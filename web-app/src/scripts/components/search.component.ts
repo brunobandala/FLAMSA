@@ -75,16 +75,11 @@ export class SearchComponent implements OnInit {
         return this.formValid;
     }
 
-    deleteSelectedRow(selectedRow: any, divRows: any) {
-        console.log(selectedRow);
-        console.log(divRows);
-
-        for (let index = 0; index < divRows.childNodes.length; index++) {
-            if (divRows.childNodes[index] == selectedRow) {
-                divRows.removeChild(divRows.childNodes[index]);
-            }
-
-        }
+    deleteSelectedRow(result: any) {
+        var index = this.results.findIndex((contract:any) => contract.id == result.id);
+        this._contractsService.deleteContract(result.id).subscribe((response:Response)=>{
+            this.results.splice(index,1);
+        });
     }
 
     buscar() {

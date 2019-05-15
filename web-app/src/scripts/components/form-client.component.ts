@@ -94,7 +94,6 @@ export class FormClientComponent implements OnInit {
     this.contractFilename = "";
     this.checkDirty();
     for (const key in this.myForm.controls) {
-      this.myForm.get(key).clearValidators();
       this.myForm.get(key).updateValueAndValidity();
     }
 

@@ -74,7 +74,7 @@
                     <tr #selectedRow *ngFor="let result of results" (click)="selectedResult(result);">
                         <td>{{result.creationUser.name | uppercase }}</td>
                         <td>{{result.provider.businessName | uppercase }}</td>
-                        <td>{{result.client.name | uppercase }}</td>
+                        <td>{{result.client.businessName | uppercase }}</td>
                         <td>{{result.product.name | uppercase }}</td>
                         <td>{{result.route.name | uppercase }}</td>
                         <td>{{result.status | uppercase }}</td>
@@ -82,7 +82,7 @@
                         <td>{{result.providerBill}}</td>
                         <td>
                             <div class="mdl-cell mdl-cell--2-col">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red-A700 mdl-color-text--white mdl-js-ripple-effect" (click)="deleteSelectedRow(selectedRow,divRows)">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-color--red-A700 mdl-color-text--white mdl-js-ripple-effect" (click)="deleteSelectedRow(result)">
                                     Eliminar
                                 </button>
                                 <!-- <button *ngIf="result.status == 'guardado'" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--light-blue-A700 mdl-color-text--white">
